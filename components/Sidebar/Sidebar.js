@@ -9,11 +9,10 @@ function Sidebar() {
 	return (
 		<div className={styles.sidebar}>
 			<Logo className={styles.logo} />
-			<NavItem content="Home" />
-			<NavItem content="Shop" />
-			<NavItem content="Product" />
-			<NavItem content="Cart" />
-			<NavItem content="Checkout" />
+			<NavItem href="/" content="Home" />
+			<NavItem href="/shop" content="Shop" />
+			<NavItem href="/products" content="Products" />
+			{/* <NavItem href="/checkout" content="Checkout" /> */}
 		</div>
 	);
 }

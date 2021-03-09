@@ -5,6 +5,10 @@
 	text-align: center;
 }
 
+.navitem.active {
+	background-color: red;
+}
+
 .logo {
 	display: inline-block;
 	margin-top: 30%;

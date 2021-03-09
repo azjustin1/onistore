@@ -1,7 +1,18 @@
 import "../styles/globals.css";
+import App from "next/app";
 
-function MyApp({ Component, pageProps }) {
-	return <Component {...pageProps} />;
+import Layout from "components/Layout/Layout.js";
+
+class MyApp extends App {
+	render() {
+		const { Component, pageProps } = this.props;
+
+		return (
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
+		);
+	}
 }
 
 export default MyApp;
