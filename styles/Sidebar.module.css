@@ -1,0 +1,67 @@
+.sidebar {
+	width: 300px;
+	min-height: 100vh;
+	background-color: white;
+	text-align: center;
+}
+
+.logo {
+	display: inline-block;
+	margin-top: 30%;
+	width: 50px;
+	height: 50px;
+	background-color: gold;
+	justify-content: center;
+}
+
+.navitem {
+	position: relative;
+	width: 100%;
+	height: 50px;
+	/* background-color: gold; */
+	margin: 10px 0;
+	align-items: center;
+	animation: none;
+}
+
+.navitem > .navitem__content {
+	position: absolute;
+	line-height: 50px;
+	margin: auto;
+}
+
+.navitem > .navitem__bar {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 5px;
+	background-color: red;
+	animation: none;
+	display: none;
+}
+
+@keyframes active {
+	from {
+		width: 0px;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+.navitem:hover {
+	width: 100%;
+	height: 50px;
+	background-color: gold;
+}
+
+.navitem:hover > .navitem__bar {
+	display: block;
+	animation: active 0.5s;
+}
+
+@media screen and (max-width: 768px) {
+	.sidebar {
+		display: none;
+	}
+}
