@@ -12,15 +12,15 @@ export default function Home() {
 				<meta name="description" content="Men clothes." />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
-			<Card />
+			<Card width="300px" height="300px" />
+			<Card width="300px" height="300px" />
+			<Card width="300px" height="300px" />
+			<Card width="300px" height="300px" />
+			<Card width="300px" height="300px" />
+			<Card width="300px" height="300px" />
+			<Card width="300px" height="300px" />
+			<Card width="300px" height="300px" />
+			<Card width="300px" height="300px" />
 		</>
 	);
 }

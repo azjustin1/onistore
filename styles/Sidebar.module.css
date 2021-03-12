@@ -1,8 +1,11 @@
 .sidebar {
-	width: 300px;
-	min-height: 100vh;
-	background-color: white;
+	grid-area: sidebar;
 	text-align: center;
+	width: 20vw;
+	height: 100%;
+	transition: width 0.5s;
+	text-align: center;
+	box-shadow: 20px 20px 60px #8f8f8f, -20px -20px 60px #ffffff;
 }
 
 .navitem.active {
@@ -10,62 +13,107 @@
 }
 
 .logo {
-	display: inline-block;
-	margin-top: 30%;
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
+	border-radius: 25px;
 	background-color: gold;
-	justify-content: center;
+	margin: auto;
+	clear: both;
+	box-shadow: 20px 20px 30px #8f8f8f, -40px -40px 60px #ffffff;
+}
+
+.logo__img {
+	transform: rotate(180deg);
+}
+
+.search {
+	margin: 50px auto;
+	width: 100%;
+	height: 50px;
+	/* background-color: rgb(214, 214, 214); */
+	display: flex;
+	border-radius: 25px;
+	background: #d6d6d6;
+	box-shadow: inset 10px 5px 5px #989898, inset -10px -5px 5px #ffffff;
+}
+
+.search__button {
+	height: 50px;
+	width: 50px;
+	border: none;
+	outline: none;
+
+	background: transparent;
+	cursor: pointer;
+	text-align: center;
+}
+
+.search__button > img {
+	border-radius: 25px;
+	line-height: 50px;
+}
+
+.search__input {
+	height: 50px;
+	line-height: 25px;
+	border: none;
+	outline: none;
+	background: transparent;
 }
 
 .navitem {
 	position: relative;
 	width: 100%;
 	height: 50px;
-	/* background-color: gold; */
-	margin: 10px 0;
 	align-items: center;
 	animation: none;
+	font-size: large;
+	font-weight: bold;
 }
 
 .navitem > .navitem__content {
 	position: absolute;
 	line-height: 50px;
-	margin: auto;
+	padding-left: 10px;
 }
 
 .navitem > .navitem__bar {
 	position: absolute;
 	bottom: 0;
-	width: 100%;
+	width: 0;
 	height: 5px;
-	background-color: red;
-	animation: none;
-	display: none;
-}
-
-@keyframes active {
-	from {
-		width: 0px;
-	}
-	to {
-		width: 100%;
-	}
+	background-color: rgb(120, 223, 120);
+	transition: width 0.2s;
 }
 
 .navitem:hover {
 	width: 100%;
 	height: 50px;
-	background-color: gold;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: rgb(214, 214, 214);
 }
 
 .navitem:hover > .navitem__bar {
-	display: block;
-	animation: active 0.5s;
+	width: 100%;
+	border-radius: 10px;
+}
+
+.navitem:hover > .navitem__content {
+	color: gray;
+}
+
+.sidebar.active > {
+	background-color: pink;
 }
 
 @media screen and (max-width: 768px) {
 	.sidebar {
-		display: none;
+		width: 0;
+		visibility: hidden;
+	}
+	.sidebar.active {
+		width: 50vw;
+		visibility: visible;
 	}
 }

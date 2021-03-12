@@ -1,5 +1,6 @@
 .footer {
-	flex-basis: 100%;
+	grid-area: footer;
 	height: 100px;
-	background-color: aqua;
+	background-color: black;
+	color: white;
 }

@@ -6,7 +6,8 @@ import Card from "components/Card/Card.js";
 
 function Main() {
 	return (
-		<div className={styles.main}>
+		<div id="main" className={styles.main}>
+			{/* <Card />
 			<Card />
 			<Card />
 			<Card />
@@ -14,8 +15,7 @@ function Main() {
 			<Card />
 			<Card />
 			<Card />
-			<Card />
-			<Card />
+			<Card /> */}
 		</div>
 	);
 }

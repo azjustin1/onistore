@@ -1,0 +1,8 @@
+.header {
+	height: 50px;
+	background-color: blue;
+}
+
+.header.active {
+	background-color: black;
+}
