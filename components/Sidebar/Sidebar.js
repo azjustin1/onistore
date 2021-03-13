@@ -5,6 +5,7 @@ import styles from "../../styles/Sidebar.module.css";
 import Logo from "components/Sidebar/Logo.js";
 import SearchBar from "components/Sidebar/SearchBar.js";
 import NavItem from "components/Sidebar/NavItem.js";
+import Button from "components/Button/Button.js";
 
 import { useStateValue } from "../../context/StateProvider";
 import { initialState } from "../../reducer/reducer";
@@ -22,6 +23,7 @@ function Sidebar() {
 
 	return (
 		<div id="sidebar" className={`${styles.sidebar}`}>
+			<Button>Hello</Button>
 			<Logo className={styles.logo} />
 			<SearchBar />
 			<NavItem href="/" content="Home" />

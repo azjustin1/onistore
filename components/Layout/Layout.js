@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.header}>
-				<Header />
+				<Header scrollSize={5} />
 			</div>
 			<div className={styles.sidebar}>
 				<Sidebar />

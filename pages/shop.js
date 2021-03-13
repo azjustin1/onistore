@@ -1,7 +1,8 @@
 import React from "react";
+import styles from "../styles/Layout.module.css";
 
 function shop() {
-	return <div>This is shop</div>;
+	return <div></div>;
 }
 
 export default shop;

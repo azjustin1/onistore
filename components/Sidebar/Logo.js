@@ -5,7 +5,7 @@ function Logo() {
 	return (
 		<div className={styles.logo}>
 			<img className={styles.logo__img} src="/favicon.ico" alt="" />
-			<h4>Onistore</h4>
+			<h4 className={styles.logo__brandName}>Onistore</h4>
 		</div>
 	);
 }

@@ -3,24 +3,9 @@ import styles from "../../styles/Header.module.css";
 import sidebar from "../../styles/Sidebar.module.css";
 
 import { useStateValue } from "../../context/StateProvider";
-import { ACTION_TYPE, initialState } from "../../reducer/reducer";
 
-function Header({ data }) {
-	const [state, dispatch] = useStateValue();
-	const [isLoading, setLoading] = useState();
-
-	useEffect(() => {
-		setLoading(initialState.isLoading);
-		console.log(state);
-	}, [data]);
-
-	const [openSidebar, setOpenSidebar] = useState(false);
-
+function Header({ scrollSize }) {
 	const handleOpenSidebar = () => {
-		// dispatch({
-		// 	type: ACTION_TYPE.START_LOADING,
-		// 	isLoading: !initialState.isLoading,
-		// });
 		var element = document.getElementById("sidebar");
 		if (element.classList.contains(`${sidebar.active}`)) {
 			element.classList.remove(`${sidebar.active}`);
@@ -29,9 +14,13 @@ function Header({ data }) {
 		}
 	};
 	return (
-		<div className={`${styles.header}`}>
-			<button id="btnOpenSidebar" onClick={handleOpenSidebar}>
-				Click to show Sidebar
+		<div id="header" className={`${styles.header}`}>
+			<h2 className={styles.header__brandName}>Onistore</h2>
+			<button
+				id="btnOpenSidebar"
+				className={styles.header__btnMenu}
+				onClick={handleOpenSidebar}>
+				<i className="fa fa-bars"></i>
 			</button>
 		</div>
 	);

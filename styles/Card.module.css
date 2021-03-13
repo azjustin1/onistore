@@ -10,7 +10,7 @@
 	height: 75%;
 	margin: 15px 5px;
 	border-radius: 25px;
-	transition: all 1s;
+	transition: all 0.75s;
 }
 
 .card__name {
@@ -30,10 +30,9 @@
 
 .card:hover {
 	/* background-color: rgb(214, 214, 214); */
-
 	cursor: pointer;
 }
 
 .card:hover > img {
-	box-shadow: 40px 40px 60px #8f8f8f, -40px -40px 60px #ffffff;
+	box-shadow: 30px 30px 40px #707070, -30px -30px 40px #ffffff;
 }

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 
 function __document({ children }) {
 	return (
 		<>
 			<Head>
-				<title>Create Next App</title>
+				<title>New Title</title>
 				<meta name="description" content="Men clothes." />
 				<link rel="icon" href="/favicon.ico" />
 				<link
