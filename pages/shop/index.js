@@ -21,6 +21,8 @@ function Shop({ children }) {
 						productName={item.productName}
 						fakePrice={item.fakePrice}
 						realPrice={item.realPrice}
+						
+						demo git
 					/>
 				))}
 			</div> */}
