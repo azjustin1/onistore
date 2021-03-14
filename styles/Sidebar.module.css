@@ -11,17 +11,12 @@
 	box-shadow: 20px 20px 60px #707070;
 }
 
-.navitem.active {
-	background-color: red;
-}
-
 .logo {
-	width: 100px;
-	height: 100px;
+	max-width: 100px;
+	max-height: 100px;
 	border-radius: 25px;
 	background-color: gold;
 	margin: 30px auto;
-	clear: both;
 	box-shadow: 10px 10px 20px #707070, -10px -10px 20px #ffffff;
 }
 
@@ -63,72 +58,14 @@
 	background: transparent;
 }
 
-.navitem {
-	position: relative;
-	width: 100%;
-	height: 50px;
-	margin: 30px auto;
-	border-radius: 25px;
-	align-items: center;
-	font-size: large;
-	font-weight: bold;
-	text-align: center;
-	background: #e0e0e0;
-	box-shadow: 5px 5px 10px #707070, -5px -5px 10px #ffffff;
-}
-
-.navitem__content {
-	line-height: 50px;
-	text-align: center;
-}
-
-.navitem > .navitem__bar {
-	position: absolute;
-	bottom: 0;
-	width: 0;
-	height: 5px;
-	margin-left: 12px;
-	border-radius: 25px;
-	background-color: black;
-	transition: width 0.2s;
-}
-
-.navitem:hover {
-	width: 100%;
-	height: 50px;
-	border-radius: 25px;
-	/* background-color: rgb(214, 214, 214); */
-	background: #d6d6d6;
-	box-shadow: inset 10px 5px 5px #707070, inset -10px -5px 5px #ffffff;
-}
-
-.navitem.active {
-	width: 100%;
-	height: 50px;
-	border-radius: 25px;
-	/* background-color: rgb(214, 214, 214); */
-	background: #d6d6d6;
-	box-shadow: inset 10px 5px 5px #707070, inset -10px -5px 5px #ffffff;
-}
-/* .navitem:hover > .navitem__bar {
-	margin-left: 12px;
-	width: 85%;
-	height: 5px;
-	border-radius: 25px;
-} */
-
-/* .navitem:hover > .navitem__content {
-	color: gray;
-} */
-
 .sidebar.active > {
 	background-color: pink;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 766px) {
 	.sidebar {
 		width: 0;
-		/* visibility: hidden; */
+		box-shadow: none;
 	}
 	.sidebar > * {
 		visibility: hidden;

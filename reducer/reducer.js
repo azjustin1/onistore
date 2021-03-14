@@ -1,4 +1,5 @@
 export const initialState = {
+	isSignIn: false,
 	isOpenSidebar: false,
 	isLoading: false,
 };
@@ -16,6 +17,8 @@ const reducer = (state, action) => {
 	// eslint-disable-next-line default-case
 	switch (action.type) {
 		case ACTION_TYPE.SIGN_IN:
+			initialState = { ...state, isSignIn: true };
+
 			return {
 				...state,
 				isSignIn: true,

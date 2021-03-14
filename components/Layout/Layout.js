@@ -1,34 +1,48 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../styles/Layout.module.css";
-import mainStyles from "../../styles/Main.module.css";
+import layout from "../../styles/Layout.module.css";
+import main from "../../styles/Main.module.css";
 
 // Components
-import Header from "components/Header/Header.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
-import Footer from "components/Footer/Footer.js";
+import Header from "components/Layout/Header/Header.js";
+import Sidebar from "components/Layout/Sidebar/Sidebar.js";
+import Footer from "components/Layout/Footer/Footer.js";
+import Button from "components/Button/Button.js";
 
 const Layout = ({ children }) => {
 	const size = useWindowSize();
 
-	// useEffect(() => {
-	// 	if (size.width == 768) {
-	// 		console.log("Move");
-	// 		var element = document.getElementsByClassName(`${styles.sidebar}`)[0];
-	// 		if (element) element.parentNode.removeChild(element);
-	// 	}
-	// }, [size]);
+	useEffect(() => {
+		document.onscroll = () => {
+			if (
+				document.body.scrollTop > 100 ||
+				document.documentElement.scrollTop > 100
+			) {
+				document.getElementById(`${layout.backToTop}`).style.display = "block";
+			} else {
+				document.getElementById(`${layout.backToTop}`).style.display = "none";
+			}
+		};
+	}, [size]);
+
+	const handleBackToTop = () => {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	};
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.header}>
+		<div className={layout.container}>
+			<div className={layout.header}>
 				<Header scrollSize={5} />
 			</div>
-			<div className={styles.sidebar}>
+			<div className={layout.sidebar}>
 				<Sidebar />
 			</div>
-			<div className={mainStyles.content}>{children}</div>
-
-			<div className={styles.footer}>
+			<div className={main.main}>{children}</div>
+			<div id={layout.backToTop}>
+				<Button id={layout.backToTop} onClick={handleBackToTop}>
+					<i className="fa fa-arrow-up"></i>
+				</Button>
+			</div>
+			<div className={layout.footer}>
 				<Footer />
 			</div>
 		</div>

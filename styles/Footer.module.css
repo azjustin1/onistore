@@ -1,8 +1,8 @@
 .footer {
 	grid-area: footer;
-	height: 100px;
-	width: 100%;
-	background-color: #bebebe;
+	min-height: 10vh;
+	min-width: 100%;
+	background-color: transparent;
 	border: 1px solid #8f8f8f;
 	padding: 20px;
 	text-align: center;

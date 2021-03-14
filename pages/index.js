@@ -1,97 +1,35 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+
+import home from "../styles/Home.module.css";
+import main from "../styles/Main.module.css";
 
 // Components
 import Card from "components/Card/Card.js";
-import { useEffect } from "react";
 
-let data = [
-	{
-		imageSrc: "tuyettran.jpg",
-		width: "300px",
-		height: "300px",
-		productName: "T-Shirt",
-		fakePrice: "500.000",
-		realPrice: "250.000",
-	},
-	{
-		imageSrc: "tuyettran.jpg",
-		width: "300px",
-		height: "300px",
-		productName: "Blouse",
-		fakePrice: "1.000.000",
-		realPrice: "500.000",
-	},
-	{
-		imageSrc: "tuyettran.jpg",
-		width: "300px",
-		height: "300px",
-		productName: "T-Shirt",
-		fakePrice: "500.000",
-		realPrice: "250.000",
-	},
-	{
-		imageSrc: "tuyettran.jpg",
-		width: "300px",
-		height: "300px",
-		productName: "T-Shirt",
-		fakePrice: "500.000",
-		realPrice: "250.000",
-	},
-	{
-		imageSrc: "tuyettran.jpg",
-		width: "300px",
-		height: "300px",
-		productName: "T-Shirt",
-		fakePrice: "500.000",
-		realPrice: "250.000",
-	},
-	{
-		imageSrc: "/tuyettran.jpg",
-		width: "300px",
-		height: "300px",
-		productName: "T-Shirt",
-		fakePrice: "500.000",
-		realPrice: "250.000",
-	},
-	{
-		imageSrc: "/tuyettran.jpg",
-		width: "300px",
-		height: "300px",
-		productName: "T-Shirt",
-		fakePrice: "500.000",
-		realPrice: "250.000",
-	},
-	{
-		imageSrc: "/tuyettran.jpg",
-		width: "300px",
-		height: "300px",
-		productName: "T-Shirt",
-		fakePrice: "500.000",
-		realPrice: "250.000",
-	},
-];
+import { products } from "../data/products";
 
 export default function Home() {
 	return (
-		<>
-			<Head>
-				<title>Home</title>
-				<meta name="description" content="Men clothes." />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+		<div className={home.home}>
+			<div className={`${main.main}`}>
+				<Head>
+					<title>Home</title>
+					<meta name="description" content="Men clothes." />
+					<link rel="icon" href="/favicon.ico" />
+				</Head>
 
-			{data.map((item, i) => (
-				<Card
-					key={i}
-					imageSrc={item.imageSrc}
-					width={item.width}
-					height={item.height}
-					productName={item.productName}
-					fakePrice={item.fakePrice}
-					realPrice={item.realPrice}
-				/>
-			))}
-		</>
+				{products.map((item, i) => (
+					<Card
+						key={i}
+						imageSrc={item.imageSrc}
+						width={item.width}
+						height={item.height}
+						productName={item.productName}
+						fakePrice={item.fakePrice}
+						realPrice={item.realPrice}
+					/>
+				))}
+			</div>
+		</div>
 	);
 }

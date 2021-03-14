@@ -1,0 +1,12 @@
+.category {
+	width: 400px;
+	min-height: 100vh;
+	background: transparent;
+	box-shadow: 20px 20px 60px #707070;
+}
+
+@media screen and (max-width: 766px) {
+	.category {
+		display: none;
+	}
+}

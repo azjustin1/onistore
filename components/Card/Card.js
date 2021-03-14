@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/Card.module.css";
-import Image from "next/image";
 
 function Card({ imageSrc, width, height, productName, fakePrice, realPrice }) {
+	const [isSignIn, setSignIn] = useState(false);
+
+	const handleCardClick = () => {};
 	return (
-		<div className={styles.card}>
+		<div className={styles.card} onClick={handleCardClick}>
 			<img
 				className={styles.img}
 				src={imageSrc}

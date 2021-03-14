@@ -1,10 +1,12 @@
-import React from "react";
-// import styles from "../../styles/global.module.css";
+import React, { useEffect } from "react";
+import layout from "../../styles/Layout.module.css";
 
-function Button({ children }) {
+function Button({ onClick, children }) {
 	return (
 		<div>
-			<button>{children}</button>
+			<button onClick={onClick} className={layout.btn}>
+				{children}
+			</button>
 		</div>
 	);
 }
