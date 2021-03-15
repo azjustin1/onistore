@@ -1,0 +1,27 @@
+.container {
+	display: flex;
+	width: 80%;
+	height: 50px;
+	justify-content: flex-start;
+	margin-left: 10%;
+	align-items: center;
+	cursor: pointer;
+}
+
+.container__checkbox {
+	display: flex;
+	width: 30px;
+	height: 30px;
+	margin: 10px;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 24pt;
+	color: rgb(27, 160, 27);
+	background: #bebebe;
+	box-shadow: 5px 5px 10px #707070, -5px -5px 10px #ffffff;
+}
+
+.container:hover > .container__checkbox {
+	background: #adadad;
+}

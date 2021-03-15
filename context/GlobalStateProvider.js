@@ -15,7 +15,6 @@ export let initialState = {
 const reducer = (state, action) => {
 	switch (action.type) {
 		case ACTION_TYPE.SIGN_IN:
-			initialState = { ...state, isSignIn: true };
 			return {
 				...state,
 				isSignIn: true,

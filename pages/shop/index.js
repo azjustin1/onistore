@@ -11,7 +11,7 @@ function Shop({ children }) {
 	return (
 		<div className={styles.shop}>
 			<Category />
-			{/* <div className={main.main}>
+			<div className={main.main}>
 				{products.map((item, i) => (
 					<Card
 						key={i}
@@ -23,7 +23,7 @@ function Shop({ children }) {
 						realPrice={item.realPrice}
 					/>
 				))}
-			</div> */}
+			</div>
 			{children}
 		</div>
 	);

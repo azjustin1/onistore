@@ -1,6 +1,7 @@
 .main {
 	grid-area: main;
 	min-height: 100vh;
+	padding: 0 10px 0;
 	overflow: hidden;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

@@ -1,0 +1,16 @@
+.container {
+	display: flex;
+	width: 80%;
+	height: 20px;
+	border-radius: 50px;
+	/* box-shadow: inset 10px 5px 5px #707070, inset -10px -5px 5px #ffffff; */
+}
+
+.container__min {
+	direction: rtl;
+}
+
+.container__max {
+	position: absolute;
+	left: 100;
+}

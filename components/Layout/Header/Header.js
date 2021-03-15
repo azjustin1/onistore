@@ -6,9 +6,10 @@ import layout from "../../../styles/Layout.module.css";
 // Components
 import Button from "components/Button/Button.js";
 
-function Header({ scrollSize }) {
+function Header() {
 	const handleOpenSidebar = () => {
-		var element = document.getElementById("sidebar");
+		const element = document.getElementsByClassName(sidebar.sidebar)[0];
+
 		if (element.classList.contains(`${sidebar.active}`)) {
 			element.classList.remove(`${sidebar.active}`);
 		} else {
@@ -19,12 +20,9 @@ function Header({ scrollSize }) {
 		<div className={`${styles.header}`}>
 			<h2 className={styles.header__brandName}>Onistore</h2>
 			<div className={styles.header__btnMenu}>
-				<button
-					id="btnOpenSidebar"
-					className={layout.btn}
-					onClick={handleOpenSidebar}>
+				<Button onClick={handleOpenSidebar}>
 					<i className="fa fa-bars"></i>
-				</button>
+				</Button>
 			</div>
 		</div>
 	);

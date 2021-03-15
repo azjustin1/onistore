@@ -11,11 +11,13 @@ class MyApp extends App {
 		const { Component, pageProps } = this.props;
 
 		return (
-			<Document>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
-			</Document>
+			<GlobalStateProvider>
+				<Document>
+					<Layout>
+						<Component {...pageProps} />
+					</Layout>
+				</Document>
+			</GlobalStateProvider>
 		);
 	}
 }

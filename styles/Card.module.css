@@ -32,5 +32,5 @@
 
 .card:hover {
 	cursor: pointer;
-	box-shadow: 30px 30px 40px #707070, -30px -30px 40px #ffffff;
+	box-shadow: 20px 20px 20px #707070, -20px -20px 20px #ffffff;
 }

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import styles from "../../styles/Navigation.module.css";
 
-function Navigation({ width, height, content, href }) {
+function Navigation({ width, height, content, fontSize, href }) {
 	const router = useRouter();
 
 	const navigate = () => {
@@ -12,7 +12,12 @@ function Navigation({ width, height, content, href }) {
 	return (
 		<div
 			onClick={navigate}
-			style={{ width: width, height: height, lineHeight: height }}
+			style={{
+				width: width,
+				height: height,
+				lineHeight: height,
+				fontSize: fontSize,
+			}}
 			className={`${styles.navigation} ${
 				router.pathname == href ? styles.active : ""
 			}`}>
