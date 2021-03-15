@@ -22,7 +22,6 @@ function Shop({ children }) {
 						fakePrice={item.fakePrice}
 						realPrice={item.realPrice}
 						
-						demo git
 					/>
 				))}
 			</div> */}
