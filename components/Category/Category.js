@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 
-import category from "../../styles/Category.module.css";
+import styles from "./Category.module.css";
 
 // Components
 import Navigation from "../Navigation/Navigation.js";
 import Checkbox from "../Checkbox/Checkbox.js";
 import InputRange from "../InputRange/InputRange.js";
+import Input from "../Input/Input.js";
+import Button from "../Button/Button.js";
 
 function Category() {
 	const router = useRouter();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
+	const handleEmailChange = (e) => {
+		setEmail(e.target.value);
+	};
+
+	const handlePasswordChange = (e) => {
+		setPassword(e.target.value);
+	};
+
+	const handleClick = () => {
+		console.log(email + " " + password);
+	};
 	return (
-		<div className={category.category}>
+		<div className={styles.category}>
 			<h3>Categories</h3>
 			<Navigation
 				href="t-shirt"
@@ -60,7 +75,29 @@ function Category() {
 			<Checkbox label="Buck Mason" />
 
 			<h3>Price</h3>
-			<InputRange />
+			<Input
+				icon="fa fa-user-o"
+				placeholder="Email"
+				value={email}
+				onChange={(e) => {
+					handleEmailChange(e);
+				}}
+				height="50px"
+			/>
+
+			<Input
+				icon="fa-key"
+				placeholder="Password"
+				value={password}
+				onChange={(e) => {
+					handlePasswordChange(e);
+				}}
+				height="50px"
+			/>
+
+			<Button width="50px" height="50px" rounded={false}>
+				Click
+			</Button>
 		</div>
 	);
 }

@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
-import styles from "../../styles/Button.module.css";
+// import styles from "../../styles/Button.module.css";
+import styles from "./Button.module.css";
 
-function Button({ onClick, children }) {
+function Button({ width, height, rounded, onClick, children }) {
 	return (
-		<button onClick={onClick} className={styles.button}>
+		<button
+			style={{ width: width, height: height }}
+			onClick={onClick}
+			className={`${styles.button} ${rounded ? styles.rounded : ""}`}>
 			{children}
 		</button>
 	);

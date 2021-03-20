@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../../styles/Sidebar.module.css";
+import styles from "./Sidebar.module.css";
 
 function Logo() {
 	return (

@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../../styles/Shop.module.css";
-import main from "../../styles/Main.module.css";
+import styles from "./Shop.module.css";
+import main from "../Main.module.css";
 
 import Category from "../../components/Category/Category.js";
 import Card from "../../components/Card/Card.js";
@@ -21,7 +21,6 @@ function Shop({ children }) {
 						productName={item.productName}
 						fakePrice={item.fakePrice}
 						realPrice={item.realPrice}
-						
 					/>
 				))}
 			</div>

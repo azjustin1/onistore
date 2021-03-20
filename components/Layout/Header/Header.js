@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../../styles/Header.module.css";
-import sidebar from "../../../styles/Sidebar.module.css";
-import layout from "../../../styles/Layout.module.css";
+import styles from "./Header.module.css";
+import sidebar from "../Sidebar/Sidebar.module.css";
+import layout from "../Layout.module.css";
 
 // Components
 import Button from "components/Button/Button.js";

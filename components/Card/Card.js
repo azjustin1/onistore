@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "../../styles/Card.module.css";
+import styles from "./Card.module.css";
 
 function Card({ imageSrc, width, height, productName, fakePrice, realPrice }) {
 	const [isSignIn, setSignIn] = useState(false);

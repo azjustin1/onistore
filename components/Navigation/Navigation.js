@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 
-import styles from "../../styles/Navigation.module.css";
+import styles from "./Navigation.module.css";
 
-function Navigation({ width, height, content, fontSize, href }) {
+function Navigation({ width, height, content, fontSize, href, rounded }) {
 	const router = useRouter();
 
 	const navigate = () => {

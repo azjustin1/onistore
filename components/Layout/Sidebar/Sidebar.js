@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import styles from "../../../styles/Sidebar.module.css";
-import header from "../../../styles/Header.module.css";
+import styles from "./Sidebar.module.css";
+import header from "../Header/Header.module.css";
 
 // Components
 import Logo from "./Logo.js";

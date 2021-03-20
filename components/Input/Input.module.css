@@ -1,0 +1,25 @@
+.container {
+	display: flex;
+	margin: 10px 0;
+	border-radius: 25px;
+	background: #d6d6d6;
+	box-shadow: inset 10px 5px 5px #707070, inset -10px -5px 5px #ffffff;
+}
+
+.container__icon {
+	font-size: 24pt;
+	width: 20%;
+	margin-left: 20px;
+	text-align: center;
+	background: transparent;
+}
+
+.container__input {
+	width: 80%;
+	height: 100%;
+	line-height: 50%;
+	margin: 0 20px 0 0;
+	border: none;
+	outline: none;
+	background: transparent;
+}

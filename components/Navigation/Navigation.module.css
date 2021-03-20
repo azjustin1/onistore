@@ -10,17 +10,6 @@
 	box-shadow: 5px 5px 10px #707070, -5px -5px 10px #ffffff;
 }
 
-.navigation > .navigation__bar {
-	position: absolute;
-	bottom: 0;
-	width: 0;
-	height: 5px;
-	margin-left: 12px;
-	border-radius: 25px;
-	background-color: black;
-	transition: width 0.2s;
-}
-
 .navigation:hover {
 	width: var(width);
 	height: var(height);
@@ -37,4 +26,16 @@
 	/* background-color: rgb(214, 214, 214); */
 	background: #d6d6d6;
 	box-shadow: inset 10px 5px 5px #707070, inset -10px -5px 5px #ffffff;
+}
+
+.navigation.rounded {
+	position: relative;
+	margin: 30px auto;
+	border-radius: 50px;
+	font-size: large;
+	font-weight: bold;
+	text-align: center;
+	background: #e0e0e0;
+	cursor: pointer;
+	box-shadow: 5px 5px 10px #707070, -5px -5px 10px #ffffff;
 }

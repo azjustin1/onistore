@@ -1,0 +1,43 @@
+.button {
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+	border: none;
+	outline: none;
+	background: #bebebe;
+	box-shadow: 5px 5px 10px #707070, -5px -5px 10px #ffffff;
+	transition: all 0.25;
+}
+
+.button:active {
+	border: none;
+	background: #bebebe;
+	box-shadow: inset 10px 10px 5px #707070, inset -10px -10px 5px #ffffff;
+}
+
+.button:focus {
+	outline: none;
+	border: none;
+}
+
+.button.rounded {
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	border: none;
+	outline: none;
+	background: #bebebe;
+	box-shadow: 5px 5px 10px #707070, -5px -5px 10px #ffffff;
+	transition: all 0.25;
+}
+
+.button.rounded:active {
+	border: none;
+	background: #bebebe;
+	box-shadow: inset 10px 10px 5px #707070, inset -10px -10px 5px #ffffff;
+}
+
+.button.rounded:focus {
+	outline: none;
+	border: none;
+}

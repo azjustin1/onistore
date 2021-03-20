@@ -1,7 +1,7 @@
 import Head from "next/head";
 
-import home from "../styles/Home.module.css";
-import main from "../styles/Main.module.css";
+import home from "./Home.module.css";
+import main from "./Main.module.css";
 
 // Components
 import Card from "components/Card/Card.js";

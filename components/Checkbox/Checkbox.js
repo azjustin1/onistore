@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../styles/Checkbox.module.css";
+import styles from "./Checkbox.module.css";
 
 function Checkbox({ label }) {
 	const [check, setCheck] = useState(false);

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/InputRange.module.css";
+import styles from "./InputRange.module.css";
 
 function Range() {
 	return (

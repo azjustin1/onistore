@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import layout from "../../styles/Layout.module.css";
-import main from "../../styles/Main.module.css";
+import layout from "./Layout.module.css";
+import main from "../../pages/Main.module.css";
 
 // Components
 import Header from "components/Layout/Header/Header.js";
