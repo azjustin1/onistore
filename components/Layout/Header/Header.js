@@ -20,7 +20,7 @@ function Header() {
 		<div className={`${styles.header}`}>
 			<h2 className={styles.header__brandName}>Onistore</h2>
 			<div className={styles.header__btnMenu}>
-				<Button onClick={handleOpenSidebar}>
+				<Button height="50px" onClick={handleOpenSidebar}>
 					<i className="fa fa-bars"></i>
 				</Button>
 			</div>

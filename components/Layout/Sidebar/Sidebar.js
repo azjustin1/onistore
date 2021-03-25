@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import styles from "./Sidebar.module.css";
 import header from "../Header/Header.module.css";
+import modal from "../../Modal/Modal.module.css";
 
 // Components
 import Logo from "./Logo.js";
@@ -22,7 +23,15 @@ function Sidebar() {
 				sidebar.classList.remove(`${styles.active}`);
 			}
 		});
+
+		// document.addEventListener("click", (e)=> {
+		// 	if()
+		// })
 	});
+
+	const openModal = () => {
+		document.getElementsByClassName(modal.modal)[0].classList.add(modal.open);
+	};
 
 	return (
 		<div id={styles.sidebar} className={`${styles.sidebar}`}>
@@ -30,6 +39,12 @@ function Sidebar() {
 			<SearchBar />
 			<Navigation href="/" content="Home" width="100%" height="50px" />
 			<Navigation href="/shop" content="Shop" width="100%" height="50px" />
+			<div onClick={openModal} className={styles.sidebar__account}>
+				<p>
+					<i style={{ fontSize: "28pt" }} className="fas fa-user-circle"></i>{" "}
+					Account
+				</p>
+			</div>
 		</div>
 	);
 }

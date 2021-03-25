@@ -10,4 +10,12 @@ module.exports = withPlugins([[withImages]], {
 		return config;
 	},
 	distDir: "build",
+	async rewrites() {
+		return [
+			{
+				source: "/api/:path*",
+				destination: "http://localhost:9000*",
+			},
+		];
+	},
 });

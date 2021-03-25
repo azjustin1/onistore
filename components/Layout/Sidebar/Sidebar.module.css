@@ -3,10 +3,10 @@
 	position: fixed;
 	text-align: center;
 	width: 20vw;
-	height: 100%;
+	min-height: 100vh;
 	padding: 10px;
 	text-align: center;
-	transition: width 0.25s;
+	transition: all 0.25s;
 	background: #bebebe;
 	box-shadow: 20px 20px 60px #707070;
 }
@@ -62,6 +62,25 @@
 	background-color: pink;
 }
 
+.sidebar__account {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: max-content;
+	height: max-content;
+	padding: 10px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	font-size: 14pt;
+	cursor: pointer;
+}
+
+.sidebar__account:hover {
+	color: #707070;
+}
 @media screen and (max-width: 766px) {
 	.sidebar {
 		width: 0;
@@ -76,5 +95,40 @@
 	}
 	.sidebar.active > * {
 		visibility: visible;
+	}
+
+	.logo {
+		display: none;
+	}
+
+	.sidebar__account {
+		width: max-content;
+		height: max-content;
+		position: absolute;
+		top: 80%;
+		font-weight: bold;
+		font-size: 14pt;
+		cursor: pointer;
+	}
+}
+
+@media screen and (min-width: 320px) and (max-width: 360px) {
+	.sidebar {
+		position: fixed;
+		top: 0;
+		min-height: 100vh;
+	}
+	.logo {
+		display: none;
+	}
+
+	.sidebar__account {
+		width: max-content;
+		height: max-content;
+		position: absolute;
+		top: 88%;
+		font-weight: bold;
+		font-size: 14pt;
+		cursor: pointer;
 	}
 }

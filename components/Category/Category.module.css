@@ -2,7 +2,13 @@
 	width: 400px;
 	min-height: 100vh;
 	background: transparent;
-	box-shadow: 20px 20px 60px #707070;
+	text-align: center;
+	justify-content: center;
+	/* box-shadow: 20px 20px 60px #707070; */
+}
+
+.category h3 {
+	font-weight: bold;
 }
 
 @media screen and (max-width: 766px) {

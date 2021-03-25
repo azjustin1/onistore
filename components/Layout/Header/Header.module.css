@@ -27,3 +27,28 @@
 	background: #bebebe;
 	box-shadow: inset 10px 10px 5px #707070, inset -10px -10px 5px #ffffff;
 }
+
+@media screen and (min-width: 320px) and (max-width: 360px) {
+	.header {
+		position: fixed;
+		display: flex;
+		width: 100%;
+		height: 50px;
+		background: #bebebe;
+		box-shadow: 20px 20px 60px #707070;
+	}
+
+	.header__btnMenu {
+		width: 50px;
+		height: 50px;
+		border-radius: 15px;
+	}
+
+	.header__brandName {
+		font-family: "Freestyle Script";
+		line-height: 5px;
+		font-size: 24pt;
+		margin-left: 12%;
+		margin-top: 25px;
+	}
+}

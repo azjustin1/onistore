@@ -5,6 +5,7 @@
 	justify-content: flex-start;
 	margin-left: 10%;
 	align-items: center;
+	font-weight: bold;
 	cursor: pointer;
 }
 
@@ -17,7 +18,7 @@
 	text-align: center;
 	line-height: 30px;
 	font-size: 24pt;
-	color: rgb(27, 160, 27);
+	color: #070707;
 	background: #bebebe;
 	box-shadow: 5px 5px 10px #707070, -5px -5px 10px #ffffff;
 }

@@ -4,6 +4,12 @@ import App from "next/app";
 import Document from "./__document.js";
 import Layout from "components/Layout/Layout.js";
 
+// Icons
+import "@fortawesome/fontawesome-free/js/fontawesome";
+import "@fortawesome/fontawesome-free/js/solid";
+import "@fortawesome/fontawesome-free/js/regular";
+import "@fortawesome/fontawesome-free/js/brands";
+
 import GlobalStateProvider from "../context/GlobalStateProvider";
 
 class MyApp extends App {

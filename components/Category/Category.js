@@ -10,6 +10,10 @@ import InputRange from "../InputRange/InputRange.js";
 import Input from "../Input/Input.js";
 import Button from "../Button/Button.js";
 
+// data
+import { categories } from "../../data/categories";
+import { brands } from "../../data/brands";
+
 function Category() {
 	const router = useRouter();
 	const [email, setEmail] = useState("");
@@ -29,75 +33,24 @@ function Category() {
 	return (
 		<div className={styles.category}>
 			<h3>Categories</h3>
-			<Navigation
-				href="t-shirt"
-				content="T-Shirt"
-				width="75%"
-				height="25px"
-				fontSize="medium"
-			/>
-			<Navigation
-				href="suit"
-				content="Suit"
-				width="75%"
-				height="25px"
-				fontSize="medium"
-			/>
-			<Navigation
-				href="sweater"
-				content="Sweater"
-				width="75%"
-				height="25px"
-				fontSize="medium"
-			/>
-			<Navigation
-				href="jeans"
-				content="Jeans"
-				width="75%"
-				height="25px"
-				fontSize="medium"
-			/>
-			<Navigation
-				href="pole-shirt"
-				content="Polo shirt"
-				width="75%"
-				height="25px"
-				fontSize="medium"
-			/>
+			{categories.map((item, i) => (
+				<Navigation
+					key
+					href={item.href}
+					content={item.name}
+					width="75%"
+					height="30px"
+					fontSize="medium"
+				/>
+			))}
+
 			<h3>Brands</h3>
-
-			<Checkbox label="Acne Studios" check={true} />
-
-			<Checkbox label="Bonobos" />
-
-			<Checkbox label="Bottega Veneta" />
-
-			<Checkbox label="Buck Mason" />
+			{brands.map((item, i) => (
+				<Checkbox label={item.name} />
+			))}
 
 			<h3>Price</h3>
-			<Input
-				icon="fa fa-user-o"
-				placeholder="Email"
-				value={email}
-				onChange={(e) => {
-					handleEmailChange(e);
-				}}
-				height="50px"
-			/>
-
-			<Input
-				icon="fa-key"
-				placeholder="Password"
-				value={password}
-				onChange={(e) => {
-					handlePasswordChange(e);
-				}}
-				height="50px"
-			/>
-
-			<Button width="50px" height="50px" rounded={false}>
-				Click
-			</Button>
+			<InputRange height="36px" width="75%" min={0} max={100} step={1} />
 		</div>
 	);
 }

@@ -7,18 +7,19 @@
 }
 
 .container__icon {
-	font-size: 24pt;
-	width: 20%;
-	margin-left: 20px;
+	font-size: 18pt;
+	width: 15%;
+	margin-left: 5px;
 	text-align: center;
 	background: transparent;
 }
 
 .container__input {
+	justify-content: flex-start;
 	width: 80%;
 	height: 100%;
 	line-height: 50%;
-	margin: 0 20px 0 0;
+	margin: 0 15px 0 0;
 	border: none;
 	outline: none;
 	background: transparent;

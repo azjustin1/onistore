@@ -7,6 +7,7 @@ import Header from "components/Layout/Header/Header.js";
 import Sidebar from "components/Layout/Sidebar/Sidebar.js";
 import Footer from "components/Layout/Footer/Footer.js";
 import Button from "components/Button/Button.js";
+import Modal from "components/Modal/Modal.js";
 
 const Layout = ({ children }) => {
 	const size = useWindowSize();
@@ -30,6 +31,8 @@ const Layout = ({ children }) => {
 
 	return (
 		<div className={layout.container}>
+			<Modal />
+
 			<div className={layout.header}>
 				<Header scrollSize={5} />
 			</div>
@@ -38,7 +41,7 @@ const Layout = ({ children }) => {
 			</div>
 			<div className={main.main}>{children}</div>
 			<div id={layout.backToTop}>
-				<Button id={layout.backToTop} onClick={handleBackToTop}>
+				<Button height="50px" id={layout.backToTop} onClick={handleBackToTop}>
 					<i className="fa fa-arrow-up"></i>
 				</Button>
 			</div>

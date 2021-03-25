@@ -2,6 +2,7 @@
 	grid-area: main;
 	display: grid;
 	min-height: 100vh;
+	padding-right: 7px;
 	overflow: hidden;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	grid-template-rows: auto;
