@@ -1,0 +1,28 @@
+.search {
+	margin: 40px auto;
+	width: 100%;
+	height: 50px;
+	display: flex;
+	border-radius: 25px;
+	background: #d6d6d6;
+	box-shadow: inset 10px 5px 5px #707070, inset -10px -5px 5px #ffffff;
+}
+
+.search__button {
+	height: 50px;
+	width: 50px;
+	border: none;
+	outline: none;
+	background: transparent;
+	cursor: pointer;
+	text-align: center;
+}
+
+.search__input {
+	height: 50px;
+	line-height: 25px;
+	width: 80%;
+	border: none;
+	outline: none;
+	background: transparent;
+}

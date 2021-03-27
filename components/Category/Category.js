@@ -7,8 +7,6 @@ import styles from "./Category.module.css";
 import Navigation from "../Navigation/Navigation.js";
 import Checkbox from "../Checkbox/Checkbox.js";
 import InputRange from "../InputRange/InputRange.js";
-import Input from "../Input/Input.js";
-import Button from "../Button/Button.js";
 
 // data
 import { categories } from "../../data/categories";

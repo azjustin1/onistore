@@ -1,16 +1,19 @@
 import Head from "next/head";
 
-import home from "./Home.module.css";
 import main from "./Main.module.css";
 
 // Components
 import Card from "components/Card/Card.js";
 
 import { products } from "../data/products";
+import { useGlobalState } from "../context/GlobalStateProvider";
+import { useEffect } from "react";
 
 export default function Home() {
+	const { state } = useGlobalState();
+
 	return (
-		<div className={home.home}>
+		<div className={main.home}>
 			<div className={`${main.main}`}>
 				<Head>
 					<title>Home</title>

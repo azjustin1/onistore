@@ -2,14 +2,22 @@ import React, { useEffect, useState } from "react";
 
 import styles from "./Sidebar.module.css";
 import header from "../Header/Header.module.css";
-import modal from "../../Modal/Modal.module.css";
+import modal from "../Modal/Modal.module.css";
 
 // Components
-import Logo from "./Logo.js";
-import SearchBar from "./SearchBar.js";
+import Logo from "components/Logo/Logo.js";
+import SearchBar from "components/SearchBar/SearchBar.js";
 import Navigation from "components/Navigation/Navigation.js";
+import UserMenu from "components/UserMenu/UserMenu";
+import {
+	useGlobalState,
+	ACTION_TYPE,
+} from "../../../context/GlobalStateProvider";
+
+import { removeClientToken } from "../../../pages/api/axios";
 
 function Sidebar() {
+	const { state, dispatch } = useGlobalState();
 	useEffect(() => {
 		const sidebar = document.getElementsByClassName(styles.sidebar)[0];
 
@@ -23,10 +31,6 @@ function Sidebar() {
 				sidebar.classList.remove(`${styles.active}`);
 			}
 		});
-
-		// document.addEventListener("click", (e)=> {
-		// 	if()
-		// })
 	});
 
 	const openModal = () => {
@@ -39,12 +43,7 @@ function Sidebar() {
 			<SearchBar />
 			<Navigation href="/" content="Home" width="100%" height="50px" />
 			<Navigation href="/shop" content="Shop" width="100%" height="50px" />
-			<div onClick={openModal} className={styles.sidebar__account}>
-				<p>
-					<i style={{ fontSize: "28pt" }} className="fas fa-user-circle"></i>{" "}
-					Account
-				</p>
-			</div>
+			<UserMenu />
 		</div>
 	);
 }

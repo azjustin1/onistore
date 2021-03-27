@@ -7,10 +7,17 @@ import Header from "components/Layout/Header/Header.js";
 import Sidebar from "components/Layout/Sidebar/Sidebar.js";
 import Footer from "components/Layout/Footer/Footer.js";
 import Button from "components/Button/Button.js";
-import Modal from "components/Modal/Modal.js";
+import Modal from "components/Layout/Modal/Modal.js";
+import Loader from "components/Layout/Loader/Loader.js";
+import { useGlobalState, ACTION_TYPE } from "../../context/GlobalStateProvider";
 
 const Layout = ({ children }) => {
+	const { state, dispatch } = useGlobalState();
 	const size = useWindowSize();
+
+	useEffect(() => {
+		dispatch({ type: ACTION_TYPE.AUTHENTICATE });
+	}, [state.isSignIn]);
 
 	useEffect(() => {
 		document.onscroll = () => {
@@ -32,6 +39,7 @@ const Layout = ({ children }) => {
 	return (
 		<div className={layout.container}>
 			<Modal />
+			<Loader />
 
 			<div className={layout.header}>
 				<Header scrollSize={5} />

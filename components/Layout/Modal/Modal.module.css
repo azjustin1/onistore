@@ -27,8 +27,8 @@
 	margin-right: auto;
 	border-radius: 10px;
 	background: #bebebe;
-	/* animation: modalOpen 1s alternate;
-	animation-fill-mode: forwards; */
+	animation: modalOpen 1s alternate;
+	animation-fill-mode: forwards;
 }
 
 .modal .container__header {

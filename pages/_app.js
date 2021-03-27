@@ -10,22 +10,40 @@ import "@fortawesome/fontawesome-free/js/solid";
 import "@fortawesome/fontawesome-free/js/regular";
 import "@fortawesome/fontawesome-free/js/brands";
 
-import GlobalStateProvider from "../context/GlobalStateProvider";
+import GlobalStateProvider, {
+	useGlobalState,
+} from "../context/GlobalStateProvider";
+import React, { useEffect, useReducer } from "react";
 
-class MyApp extends App {
-	render() {
-		const { Component, pageProps } = this.props;
-
-		return (
-			<GlobalStateProvider>
-				<Document>
+function MyApp({ Component, pageProps }) {
+	return (
+		<React.StrictMode>
+			<Document>
+				<GlobalStateProvider>
 					<Layout>
 						<Component {...pageProps} />
 					</Layout>
-				</Document>
-			</GlobalStateProvider>
-		);
-	}
+				</GlobalStateProvider>
+			</Document>
+		</React.StrictMode>
+	);
 }
+// class MyApp extends App {
+// 	render() {
+// 		const { Component, pageProps } = this.props;
+
+// 		return (
+// 			<React.StrictMode>
+// 				<GlobalContext.Provider value={{ state, dispatch, ACTION_TYPE }}>
+// 					<Document>
+// 						<Layout>
+// 							<Component {...pageProps} />
+// 						</Layout>
+// 					</Document>
+// 				</GlobalContext.Provider>
+// 			</React.StrictMode>
+// 		);
+// 	}
+// }
 
 export default MyApp;

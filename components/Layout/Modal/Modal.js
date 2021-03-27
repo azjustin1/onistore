@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import styles from "./Modal.module.css";
 
 // Components
-import Input from "../Input/Input.js";
-import Button from "../Button/Button.js";
+import Input from "../../Input/Input.js";
+import Button from "../../Button/Button.js";
 
-import axios from "../../pages/api/axios";
+import axios from "../../../pages/api/axios";
 
-function Modal({ children }) {
+// Context
+import {
+	useGlobalState,
+	ACTION_TYPE,
+} from "../../../context/GlobalStateProvider";
+
+const Modal = () => {
+	const { state, dispatch } = useGlobalState();
 	const [isOpenSignIn, setOpen] = useState(true);
 
 	const [user, setUser] = useState({
@@ -56,13 +63,25 @@ function Modal({ children }) {
 	};
 
 	const handleSignIn = async () => {
-		// const response = await axios.post("/users/signin", user);
 		try {
-			console.log("Get");
-			const response = await axios.get("/");
-			console.log(response);
+			dispatch({ type: ACTION_TYPE.START_LOADING });
+			const response = await axios.post("/users/signin", user, {
+				timeout: 3000,
+			});
+			dispatch({
+				type: ACTION_TYPE.SET_TOKEN,
+				payload: response.data.accessToken,
+			});
+
+			dispatch({
+				type: ACTION_TYPE.SIGN_IN,
+			});
+			dispatch({ type: ACTION_TYPE.FINISH_LOADING });
+			document
+				.getElementsByClassName(styles.modal)[0]
+				.classList.remove(styles.open);
 		} catch (error) {
-			console.log(error);
+			dispatch({ type: ACTION_TYPE.FINISH_LOADING });
 		}
 	};
 
@@ -157,6 +176,6 @@ function Modal({ children }) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Modal;
