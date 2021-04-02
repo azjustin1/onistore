@@ -9,9 +9,13 @@ function Checkbox({ label }) {
 	};
 
 	return (
-		<div className={styles.container} onClick={handleCheck}>
-			<div className={`${styles.container__checkbox}`}>
-				{check ? <i className="fa fa-check"></i> : ""}
+		<div className={`${styles.container}`} onClick={handleCheck}>
+			<div
+				className={`${styles.container__checkbox} ${
+					check ? styles.check : ""
+				}`}>
+				<div className={styles.container__checkbox__tick}></div>
+				{check}
 			</div>
 			<div className={styles.container__label}>{label}</div>
 		</div>

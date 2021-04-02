@@ -1,19 +1,13 @@
-import "../styles/globals.css";
-import App from "next/app";
-
-import Document from "./__document.js";
-import Layout from "components/Layout/Layout.js";
-
-// Icons
-import "@fortawesome/fontawesome-free/js/fontawesome";
-import "@fortawesome/fontawesome-free/js/solid";
-import "@fortawesome/fontawesome-free/js/regular";
 import "@fortawesome/fontawesome-free/js/brands";
-
-import GlobalStateProvider, {
-	useGlobalState,
-} from "../context/GlobalStateProvider";
-import React, { useEffect, useReducer } from "react";
+import "@fortawesome/fontawesome-free/js/fontawesome";
+import "@fortawesome/fontawesome-free/js/regular";
+import "@fortawesome/fontawesome-free/js/solid";
+import Layout from "components/Layout/Layout.js";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import GlobalStateProvider from "../context/GlobalStateProvider";
+import "../styles/globals.css";
+import Document from "./__document.js";
 
 function MyApp({ Component, pageProps }) {
 	return (
@@ -28,22 +22,5 @@ function MyApp({ Component, pageProps }) {
 		</React.StrictMode>
 	);
 }
-// class MyApp extends App {
-// 	render() {
-// 		const { Component, pageProps } = this.props;
-
-// 		return (
-// 			<React.StrictMode>
-// 				<GlobalContext.Provider value={{ state, dispatch, ACTION_TYPE }}>
-// 					<Document>
-// 						<Layout>
-// 							<Component {...pageProps} />
-// 						</Layout>
-// 					</Document>
-// 				</GlobalContext.Provider>
-// 			</React.StrictMode>
-// 		);
-// 	}
-// }
 
 export default MyApp;

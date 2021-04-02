@@ -1,5 +1,7 @@
 import React from "react";
 import { useGlobalState } from "../../context/GlobalStateProvider";
+
+import modal from "../Layout/Modal/Modal.module.css";
 import styles from "./UserMenu.module.css";
 
 function UserMenu() {

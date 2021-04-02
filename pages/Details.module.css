@@ -1,0 +1,79 @@
+.detail__container {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-areas: "left right";
+	gap: 20px;
+}
+
+.detail__left {
+	grid-area: left;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: minmax(300px, 600px) 18vh;
+	text-align: center;
+}
+
+.detail__right {
+	grid-area: right;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	justify-content: flex-start;
+	grid-template-rows: min-content;
+	background: transparent;
+}
+
+.detail__right > * {
+	margin: 20px 0;
+	font-size: large;
+}
+
+.detail__img {
+	height: 100%;
+	padding: 15px;
+	animation: stay 1s alternate;
+}
+
+@keyframes stay {
+}
+@keyframes slide {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+.detail__others {
+	display: grid;
+	width: 100%;
+	padding: 10px;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-auto-rows: min-content;
+}
+
+.detail__others img {
+	padding: 0 5px;
+}
+
+.detail__name {
+	font-size: 36pt;
+	font-weight: bold;
+}
+
+.detail__button {
+	margin-top: 40px;
+}
+
+@media screen and (max-width: 1023px) {
+	.detail__container {
+		display: grid;
+		padding: 20px;
+		grid-template-columns: 50% 50%;
+		grid-auto-rows: minmax(max-content, max-content);
+		grid-template-areas:
+			"left left"
+			"right right";
+	}
+}

@@ -14,6 +14,8 @@
 	width: 30px;
 	height: 30px;
 	margin: 10px;
+	justify-content: center;
+	align-items: center;
 	border-radius: 10px;
 	text-align: center;
 	line-height: 30px;
@@ -21,6 +23,18 @@
 	color: #070707;
 	background: #bebebe;
 	box-shadow: 5px 5px 10px #707070, -5px -5px 10px #ffffff;
+}
+
+.container__checkbox.check .container__checkbox__tick {
+	display: block;
+}
+
+.container__checkbox .container__checkbox__tick {
+	display: none;
+	width: 24px;
+	height: 24px;
+	border-radius: 8px;
+	background: #707070;
 }
 
 .container:hover > .container__checkbox {

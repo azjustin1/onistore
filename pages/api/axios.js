@@ -21,10 +21,11 @@ export const setClientToken = (token) => {
 };
 
 export const removeClientToken = () => {
-	instance.interceptors.request.use((config) => {
-		config.headers.Authorization = "";
-		return config;
-	});
+	delete axios.defaults.headers.Authorization;
+	// instance.interceptors.request.use((config) => {
+	// 	config.headers.Authorization = "";
+	// 	return config;
+	// });
 };
 
 export default instance;

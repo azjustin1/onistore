@@ -32,19 +32,12 @@ function Category() {
 		<div className={styles.category}>
 			<h3>Categories</h3>
 			{categories.map((item, i) => (
-				<Navigation
-					key
-					href={item.href}
-					content={item.name}
-					width="75%"
-					height="30px"
-					fontSize="medium"
-				/>
+				<Checkbox key={i} label={item.name} />
 			))}
 
 			<h3>Brands</h3>
 			{brands.map((item, i) => (
-				<Checkbox label={item.name} />
+				<Checkbox key={i} label={item.name} />
 			))}
 
 			<h3>Price</h3>

@@ -11,18 +11,11 @@
 }
 
 .navigation:hover {
-	width: var(width);
-	height: var(height);
-	border-radius: 25px;
-	/* background-color: rgb(214, 214, 214); */
 	background: #d6d6d6;
 	box-shadow: inset 10px 5px 5px #707070, inset -10px -5px 5px #ffffff;
 }
 
 .navigation.active {
-	width: var(width);
-	height: var(height);
-	border-radius: 25px;
 	background: #d6d6d6;
 	box-shadow: inset 10px 5px 5px #707070, inset -10px -5px 5px #ffffff;
 }

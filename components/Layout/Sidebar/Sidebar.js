@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from "react";
-
-import styles from "./Sidebar.module.css";
-import header from "../Header/Header.module.css";
-import modal from "../Modal/Modal.module.css";
-
 // Components
 import Logo from "components/Logo/Logo.js";
-import SearchBar from "components/SearchBar/SearchBar.js";
 import Navigation from "components/Navigation/Navigation.js";
+import SearchBar from "components/SearchBar/SearchBar.js";
 import UserMenu from "components/UserMenu/UserMenu";
-import {
-	useGlobalState,
-	ACTION_TYPE,
-} from "../../../context/GlobalStateProvider";
-
-import { removeClientToken } from "../../../pages/api/axios";
+import React, { useEffect } from "react";
+import { useGlobalState } from "../../../context/GlobalStateProvider";
+import header from "../Header/Header.module.css";
+import modal from "../Modal/Modal.module.css";
+import styles from "./Sidebar.module.css";
 
 function Sidebar() {
 	const { state, dispatch } = useGlobalState();
@@ -41,8 +34,27 @@ function Sidebar() {
 		<div id={styles.sidebar} className={`${styles.sidebar}`}>
 			<Logo className={styles.logo} />
 			<SearchBar />
-			<Navigation href="/" content="Home" width="100%" height="50px" />
-			<Navigation href="/shop" content="Shop" width="100%" height="50px" />
+			<Navigation
+				href="/"
+				content="Home"
+				icon="fas fa-home"
+				width="100%"
+				height="50px"
+			/>
+			<Navigation
+				href="/shop"
+				content="Shop"
+				icon="fas fa-tshirt"
+				width="100%"
+				height="50px"
+			/>
+			<Navigation
+				href="/cart"
+				content="Cart"
+				icon="fas fa-shopping-cart"
+				width="100%"
+				height="50px"
+			/>
 			<UserMenu />
 		</div>
 	);
