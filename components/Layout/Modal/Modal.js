@@ -5,7 +5,8 @@ import styles from "./Modal.module.css";
 import Input from "../../Input/Input.js";
 import Button from "../../Button/Button.js";
 
-import axios from "../../../pages/api/axios";
+import axios from "../../../api/axios";
+// import axios from "axios";
 
 // Context
 import {
@@ -18,7 +19,7 @@ const Modal = () => {
 	const [isOpenSignIn, setOpen] = useState(true);
 
 	const [user, setUser] = useState({
-		email: "",
+		username: "",
 		password: "",
 	});
 	const [newUser, setNewUser] = useState({
@@ -65,9 +66,8 @@ const Modal = () => {
 	const handleSignIn = async () => {
 		try {
 			dispatch({ type: ACTION_TYPE.START_LOADING });
-			const response = await axios.post("/users/signin", user, {
-				timeout: 3000,
-			});
+			const response = await axios.post("/signin", user);
+
 			dispatch({
 				type: ACTION_TYPE.SET_TOKEN,
 				payload: response.data.accessToken,
@@ -85,8 +85,38 @@ const Modal = () => {
 		}
 	};
 
-	const handleSignUp = () => {
-		console.log(newUser);
+	const handleSignUp = async () => {
+		try {
+			// dispatch({ type: ACTION_TYPE.START_LOADING });
+			// console.log(user);
+			// const response = await axios.post("/signin", user);
+			// dispatch({
+			// 	type: ACTION_TYPE.SET_TOKEN,
+			// 	payload: response.data.accessToken,
+			// });
+
+			// dispatch({
+			// 	type: ACTION_TYPE.SIGN_IN,
+			// });
+			// dispatch({ type: ACTION_TYPE.FINISH_LOADING });
+
+			// const response = await fetch("http://localhost:9000/api/products", {
+			// 	method: "GET",
+			// 	headers: {
+			// 		Accept: "application/json",
+			// 		"Access-Control-Allow-Origin": "*",
+			// 	},
+			// });
+			// const response = await axios.get("http://localhost:9000/api/products");
+			const response = await axios.get("/api/products");
+			console.log(response);
+			document
+				.getElementsByClassName(styles.modal)[0]
+				.classList.remove(styles.open);
+		} catch (error) {
+			console.log(error);
+			dispatch({ type: ACTION_TYPE.FINISH_LOADING });
+		}
 	};
 
 	return (
@@ -122,10 +152,10 @@ const Modal = () => {
 							height="50px"
 							width="90%"
 							margin="20px auto"
-							placeholder="Username"
-							icon="fas fa-user-circle"
-							value={newUser.username}
-							name="username"
+							placeholder="Email"
+							icon="fas fa-envelope"
+							value={newUser.email}
+							name="email"
 							onChange={handleInputChange}
 						/>
 					) : (
@@ -137,10 +167,10 @@ const Modal = () => {
 						height="50px"
 						width="90%"
 						margin="20px auto"
-						placeholder="Email"
-						icon="fas fa-envelope"
-						value={isOpenSignIn ? user.email : newUser.email}
-						name="email"
+						placeholder="Username"
+						icon="fas fa-user-circle"
+						value={isOpenSignIn ? user.username : newUser.username}
+						name="username"
 						onChange={handleInputChange}
 					/>
 					<Input

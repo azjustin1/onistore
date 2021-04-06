@@ -31,11 +31,17 @@
 .detail__img {
 	height: 100%;
 	padding: 15px;
-	animation: stay 1s alternate;
 }
 
-@keyframes stay {
+@keyframes test {
+	from {
+		width: 100%;
+	}
+	to {
+		width: 0;
+	}
 }
+
 @keyframes slide {
 	from {
 		width: 0;
@@ -60,6 +66,10 @@
 .detail__name {
 	font-size: 36pt;
 	font-weight: bold;
+}
+
+.detail__quantity {
+	width: 100px;
 }
 
 .detail__button {

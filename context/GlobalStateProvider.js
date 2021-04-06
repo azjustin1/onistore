@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 
-import { removeClientToken, setClientToken } from "../pages/api/axios";
+import { removeClientToken, setClientToken } from "../api/axios";
 
 export const ACTION_TYPE = {
 	USER: "USER",

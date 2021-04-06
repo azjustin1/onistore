@@ -3,19 +3,17 @@ import styles from "./InputNumber.module.css";
 
 import Button from "../Button/Button.js";
 
-function InputNumber({ width, value, onIncrease, onDecrease }) {
+function InputNumber({ width, height, value, onIncrease, onDecrease }) {
 	return (
-		<div
-			className={styles.container}
-			style={{ width: width, lineHeight: "40px" }}>
+		<div className={styles.container}>
 			<div className={styles.container__decrease}>
 				<Button
 					onClick={onDecrease}
-					width="40px"
-					height="40px"
-					lineHeight="30px"
+					width={width}
+					height={height}
+					lineHeight={height}
 					borderRadius="10px"
-					fontSize="24pt"
+					fontSize="large"
 					fontWeight="bold">
 					-
 				</Button>
@@ -24,11 +22,11 @@ function InputNumber({ width, value, onIncrease, onDecrease }) {
 			<div className={styles.container__increase}>
 				<Button
 					onClick={onIncrease}
-					width="40px"
-					height="40px"
-					lineHeight="30px"
+					width={width}
+					height={height}
+					lineHeight={height}
 					borderRadius="10px"
-					fontSize="24pt"
+					fontSize="large"
 					fontWeight="bold">
 					+
 				</Button>

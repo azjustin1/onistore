@@ -25,10 +25,8 @@ function Detail() {
 		setImage(images[0]);
 	}, []);
 
-	const handleImageChange = (e) => {
+	const handleImageChange = async (e) => {
 		setImage(e.target.src);
-		document.getElementsByClassName(styles.detail__img)[0].style.animation =
-			"0.5";
 	};
 
 	const onIncrease = () => {
@@ -80,7 +78,8 @@ function Detail() {
 				</div>
 				<div className={styles.detail__quantity}>
 					<InputNumber
-						width="100px"
+						width="40px"
+						height="40px"
 						value={quantity.value}
 						onIncrease={onIncrease}
 						onDecrease={onDecrease}

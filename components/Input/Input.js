@@ -11,6 +11,7 @@ function Input({
 	margin,
 	name,
 	type,
+	multiline,
 }) {
 	return (
 		<div
@@ -21,17 +22,27 @@ function Input({
 				margin: margin,
 			}}
 			className={styles.container}>
-			<div className={styles.container__icon}>
-				<i className={icon}></i>
-			</div>
-			<input
-				type={type}
-				className={styles.container__input}
-				placeholder={placeholder}
-				value={value}
-				name={name}
-				onChange={onChange}
-			/>
+			{icon ? (
+				<div className={styles.container__icon}>
+					<i className={icon}></i>
+				</div>
+			) : (
+				<div className={styles.container__noIcon}></div>
+			)}
+			{multiline ? (
+				<textarea
+					className={styles.container__input}
+					placeholder={placeholder}></textarea>
+			) : (
+				<input
+					type={type}
+					className={styles.container__input}
+					placeholder={placeholder}
+					value={value}
+					name={name}
+					onChange={onChange}
+				/>
+			)}
 		</div>
 	);
 }

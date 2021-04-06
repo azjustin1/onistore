@@ -15,6 +15,7 @@ function Shop({ children }) {
 				{products.map((item, i) => (
 					<Card
 						key={i}
+						href={item.productName}
 						imageSrc={item.imageSrc}
 						width={item.width}
 						height={item.height}

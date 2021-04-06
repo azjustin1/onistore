@@ -9,6 +9,10 @@ module.exports = withPlugins([[withImages]], {
 		config.resolve.modules.push(path.resolve("./"));
 		return config;
 	},
+	publicRuntimeConfig: {
+		// Will be available on both server and client
+		backendUrl: process.env.BACKEND_URL,
+	},
 	distDir: "build",
 	async rewrites() {
 		return [

@@ -26,10 +26,6 @@ function Sidebar() {
 		});
 	});
 
-	const openModal = () => {
-		document.getElementsByClassName(modal.modal)[0].classList.add(modal.open);
-	};
-
 	return (
 		<div id={styles.sidebar} className={`${styles.sidebar}`}>
 			<Logo className={styles.logo} />
@@ -52,6 +48,13 @@ function Sidebar() {
 				href="/cart"
 				content="Cart"
 				icon="fas fa-shopping-cart"
+				width="100%"
+				height="50px"
+			/>
+			<Navigation
+				href="/checkout"
+				content="Checkout"
+				icon="fas fa-credit-card"
 				width="100%"
 				height="50px"
 			/>

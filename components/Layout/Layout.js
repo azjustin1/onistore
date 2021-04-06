@@ -47,7 +47,12 @@ const Layout = ({ children }) => {
 			</div>
 			<div className={main.main}>{children}</div>
 			<div id={layout.backToTop}>
-				<Button height="50px" id={layout.backToTop} onClick={handleBackToTop}>
+				<Button
+					height="40px"
+					width="40px"
+					borderRadius="10px"
+					id={layout.backToTop}
+					onClick={handleBackToTop}>
 					<i className="fa fa-arrow-up"></i>
 				</Button>
 			</div>

@@ -14,9 +14,33 @@
 	cursor: pointer;
 }
 
-.userMenu:hover {
-	color: #707070;
+/* .userMenu:not(.userMenu__menu):hover {
+		color: #707070;
+	} */
+
+.userMenu__menu {
+	display: none;
+	left: 30%;
+	bottom: -30px;
+	width: 200px;
+	border-radius: 5px;
+	height: max-content;
+	background: #e0e0e0;
+	cursor: pointer;
+	box-shadow: 5px 5px 10px #707070, -5px -5px 10px #ffffff;
+	z-index: 1;
 }
+
+.userMenu__menu.open {
+	display: block;
+}
+
+.userMenu__menu li {
+	list-style: none;
+	height: 40px;
+	line-height: 40px;
+}
+
 @media screen and (max-width: 766px) {
 	.userMenu {
 		width: max-content;

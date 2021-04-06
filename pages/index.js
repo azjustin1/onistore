@@ -9,9 +9,18 @@ import { products } from "../data/products";
 import { useGlobalState } from "../context/GlobalStateProvider";
 import { useEffect } from "react";
 
+import axios from "axios";
+
 export default function Home() {
 	const { state } = useGlobalState();
-
+	useEffect(async () => {
+		// const response = await axios.get("/api/products");
+		// console.log(response.data);
+		// const response = await fetch("http://localhost:9000/api/products", {
+		// 	method: "GET",
+		// });
+		// console.log(response);
+	});
 	return (
 		<div className={main.home}>
 			<div className={`${main.main}`}>
@@ -24,6 +33,7 @@ export default function Home() {
 				{products.map((item, i) => (
 					<Card
 						key={i}
+						href={item.productName}
 						imageSrc={item.imageSrc}
 						width={item.width}
 						height={item.height}

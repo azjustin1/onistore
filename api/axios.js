@@ -1,16 +1,17 @@
 import axios from "axios";
+import queryString from "query-string";
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
 
 const config = {
-	accept: "application/json",
-	headers: { "Access-Control-Allow-Origin": "*" },
+	Accept: "application/json",
 	"Content-Type": "application/json",
 };
 
 const instance = axios.create({
-	baseURL: "http://localhost:9000/api/v2",
+	baseURL: publicRuntimeConfig.backendUrl,
 	config: config,
-
-	// paramsSerializer: (params) => queryString.stringify(params),
+	paramsSerializer: (params) => queryString.stringify(params),
 });
 
 export const setClientToken = (token) => {
@@ -22,10 +23,6 @@ export const setClientToken = (token) => {
 
 export const removeClientToken = () => {
 	delete axios.defaults.headers.Authorization;
-	// instance.interceptors.request.use((config) => {
-	// 	config.headers.Authorization = "";
-	// 	return config;
-	// });
 };
 
 export default instance;

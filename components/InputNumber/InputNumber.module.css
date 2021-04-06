@@ -1,26 +1,27 @@
 .container {
 	display: flex;
-	text-align: center;
 }
 .container__decrease {
 	width: 100%;
 	height: 100%;
-	background: transparent;
-	font-weight: bold;
-	font-size: 28pt;
 }
 
 .container__number {
-	margin: 0 20px;
+	margin: auto 12px;
 	width: 20px;
+	font-weight: bold;
+	font-size: large;
 	background: transparent;
-	/* border: none; */
 	outline: none;
-	font-size: 18pt;
 }
 
 .container__increase {
 	width: 100%;
 	height: 100%;
-	background: transparent;
+}
+
+@media screen and (max-width: 767px) {
+	.container__number {
+		font-size: normal;
+	}
 }
