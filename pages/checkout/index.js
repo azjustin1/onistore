@@ -9,7 +9,6 @@ const index = () => {
 			<div className={styles.checkout__container}>
 				<div className={styles.checkout__left}>
 					<h1>Checkout</h1>
-					<Input height="30px" width="80%" placeholder="Name" />
 					<Input height="30px" width="80%" placeholder="Email" />
 					<Input height="30px" width="80%" placeholder="Address" />
 					<Input height="30px" width="80%" placeholder="Phone number" />
@@ -17,7 +16,7 @@ const index = () => {
 						height="200px"
 						width="80%"
 						multiline={true}
-						placeholder="Leave a comment"
+						placeholder="Note"
 					/>
 				</div>
 				<div className={styles.checkout__right}>
