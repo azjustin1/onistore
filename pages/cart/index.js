@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../components/Button/Button";
 import CartItem from "../../components/CardItem/CardItem";
 import styles from "./Cart.module.css";
 
+// Contexts
+import { useCart } from "../../contexts/CartProvider";
+
 function Cart() {
+	const { state, dispatch } = useCart();
+	const [products, setProducts] = useState([]);
+	useEffect(async () => {
+		// const cart = await localStorage.getItem("cart");
+		// // setProducts(JSON.parse(cart));
+		// console.log(JSON.parse(cart));
+		console.log(state.products);
+	}, []);
+
 	return (
 		<div className={styles.cart__container}>
 			<div className={styles.cart__left}>
 				<h1>Shopping Cart</h1>
-				<CartItem />
+				{/* {products.map((item, i) => (
+					<CartItem />
+				))} */}
 			</div>
 			<div className={styles.cart__right}>
 				<h1>Total</h1>
