@@ -18,7 +18,7 @@ function Input({
 			style={{
 				width: width,
 				height: height,
-				lineHeight: height,
+				lineHeight: "120%",
 				margin: margin,
 			}}
 			className={styles.container}>
@@ -31,7 +31,7 @@ function Input({
 			)}
 			{multiline ? (
 				<textarea
-					className={styles.container__input}
+					className={styles.container__textarea}
 					placeholder={placeholder}></textarea>
 			) : (
 				<input

@@ -4,13 +4,13 @@ import Navigation from "components/Navigation/Navigation.js";
 import SearchBar from "components/SearchBar/SearchBar.js";
 import UserMenu from "components/UserMenu/UserMenu";
 import React, { useEffect } from "react";
-import { useGlobalState } from "../../../context/GlobalStateProvider";
 import header from "../Header/Header.module.css";
-import modal from "../Modal/Modal.module.css";
 import styles from "./Sidebar.module.css";
 
+import { useCart } from "../../../contexts/CartProvider";
+
 function Sidebar() {
-	const { state, dispatch } = useGlobalState();
+	const { state } = useCart();
 	useEffect(() => {
 		const sidebar = document.getElementsByClassName(styles.sidebar)[0];
 
@@ -46,7 +46,7 @@ function Sidebar() {
 			/>
 			<Navigation
 				href="/cart"
-				content="Cart"
+				content={"Cart " + "(" + state.products.length + ")"}
 				icon="fas fa-shopping-cart"
 				width="100%"
 				height="50px"

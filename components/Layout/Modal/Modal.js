@@ -12,7 +12,7 @@ import axios from "../../../api/axios";
 import {
 	useGlobalState,
 	ACTION_TYPE,
-} from "../../../context/GlobalStateProvider";
+} from "../../../contexts/GlobalStateProvider";
 
 const Modal = () => {
 	const { state, dispatch } = useGlobalState();
@@ -87,27 +87,6 @@ const Modal = () => {
 
 	const handleSignUp = async () => {
 		try {
-			// dispatch({ type: ACTION_TYPE.START_LOADING });
-			// console.log(user);
-			// const response = await axios.post("/signin", user);
-			// dispatch({
-			// 	type: ACTION_TYPE.SET_TOKEN,
-			// 	payload: response.data.accessToken,
-			// });
-
-			// dispatch({
-			// 	type: ACTION_TYPE.SIGN_IN,
-			// });
-			// dispatch({ type: ACTION_TYPE.FINISH_LOADING });
-
-			// const response = await fetch("http://localhost:9000/api/products", {
-			// 	method: "GET",
-			// 	headers: {
-			// 		Accept: "application/json",
-			// 		"Access-Control-Allow-Origin": "*",
-			// 	},
-			// });
-			// const response = await axios.get("http://localhost:9000/api/products");
 			const response = await axios.get("/api/products");
 			console.log(response);
 			document
@@ -190,6 +169,7 @@ const Modal = () => {
 							onClick={handleSignIn}
 							width="50%"
 							height="40px"
+							borderRadius="10px"
 							margin="30px auto 0 auto">
 							Sign In
 						</Button>
@@ -198,6 +178,7 @@ const Modal = () => {
 							onClick={handleSignUp}
 							width="50%"
 							height="40px"
+							borderRadius="10px"
 							margin="30px auto 0 auto">
 							Sign Up
 						</Button>

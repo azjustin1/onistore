@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useGlobalState, ACTION_TYPE } from "../../context/GlobalStateProvider";
+import {
+	useGlobalState,
+	ACTION_TYPE,
+} from "../../contexts/GlobalStateProvider";
 
 import modal from "../Layout/Modal/Modal.module.css";
 import styles from "./UserMenu.module.css";

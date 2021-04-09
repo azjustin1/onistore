@@ -6,7 +6,10 @@ import Loader from "components/Layout/Loader/Loader.js";
 import Modal from "components/Layout/Modal/Modal.js";
 import Sidebar from "components/Layout/Sidebar/Sidebar.js";
 import React, { useEffect, useState } from "react";
-import { ACTION_TYPE, useGlobalState } from "../../context/GlobalStateProvider";
+import {
+	ACTION_TYPE,
+	useGlobalState,
+} from "../../contexts/GlobalStateProvider";
 import main from "../../pages/Main.module.css";
 import layout from "./Layout.module.css";
 

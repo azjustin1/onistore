@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useGlobalState } from "../../../context/GlobalStateProvider";
+import { useGlobalState } from "../../../contexts/GlobalStateProvider";
 import styles from "./Loader.module.css";
 
 function Loader() {

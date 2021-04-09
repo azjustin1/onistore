@@ -6,7 +6,7 @@ import main from "./Main.module.css";
 import Card from "components/Card/Card.js";
 
 import { products } from "../data/products";
-import { useGlobalState } from "../context/GlobalStateProvider";
+import { useGlobalState } from "../contexts/GlobalStateProvider";
 import { useEffect } from "react";
 
 import axios from "axios";
