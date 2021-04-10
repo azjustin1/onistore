@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Details.module.css";
+import { useRouter } from "next/router";
 
 import Button from "../components/Button/Button.js";
 import InputNumber from "../components/InputNumber/InputNumber.js";
@@ -24,7 +25,11 @@ let data = {
 	],
 };
 
+import axios from "../api/axios";
+import { route } from "next/dist/next-server/server/router";
+
 function Detail() {
+	const router = useRouter();
 	const { dispatch } = useCart();
 	const [amount, setAmount] = useState(1);
 
@@ -33,19 +38,21 @@ function Detail() {
 		name: "",
 		fakePrice: "",
 		price: "",
-		quantity: 0,
 		description: "",
 		images: [],
 	});
 
 	const [image, setImage] = useState();
 
-	useEffect(() => {
-		setProduct(data);
-	}, []);
+	useEffect(async () => {
+		if (router.isReady) {
+			const response = await axios.get(`/products${router.asPath}`);
+			setProduct(response.data.products);
+		}
+	}, [router.asPath]);
 
 	useEffect(() => {
-		setImage(product.images[0]);
+		if (product.images) setImage(product.images[0]);
 	}, [product]);
 
 	const handleImageChange = async (e) => {
@@ -64,8 +71,9 @@ function Detail() {
 		dispatch({
 			type: CART_ACTION.ADD_TO_CART,
 			product: product,
-			quantity: amount,
+			amount: amount,
 		});
+		dispatch({ type: CART_ACTION.UPDATE_CART });
 	};
 
 	return (
@@ -75,18 +83,20 @@ function Detail() {
 					<img src={image} alt="" width="100%" height="100%" />
 				</div>
 				<div className={styles.detail__others}>
-					{product.images.map((item, i) => {
-						return (
-							<img
-								key={i}
-								onClick={handleImageChange}
-								src={item}
-								alt=""
-								height="100%"
-								width="100%"
-							/>
-						);
-					})}
+					{product.images
+						? product.images.map((item, i) => {
+								return (
+									<img
+										key={i}
+										onClick={handleImageChange}
+										src={item}
+										alt=""
+										height="100%"
+										width="100%"
+									/>
+								);
+						  })
+						: ""}
 				</div>
 			</div>
 			<div className={styles.detail__right}>

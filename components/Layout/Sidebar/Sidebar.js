@@ -46,7 +46,7 @@ function Sidebar() {
 			/>
 			<Navigation
 				href="/cart"
-				content={"Cart " + "(" + state.products.length + ")"}
+				content={"Cart " + "(" + state.cart.length + ")"}
 				icon="fas fa-shopping-cart"
 				width="100%"
 				height="50px"

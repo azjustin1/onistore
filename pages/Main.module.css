@@ -1,6 +1,7 @@
 .main {
 	grid-area: main;
 	display: grid;
+	grid-gap: 5px;
 	min-height: 100vh;
 	padding-right: 7px;
 	overflow: hidden;

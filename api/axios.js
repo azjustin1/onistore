@@ -3,13 +3,15 @@ import queryString from "query-string";
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
+const baseURL = "http://localhost:8000/api";
+
 const config = {
 	Accept: "application/json",
 	"Content-Type": "application/json",
 };
 
 const instance = axios.create({
-	baseURL: publicRuntimeConfig.backendUrl,
+	baseURL: baseURL,
 	config: config,
 	paramsSerializer: (params) => queryString.stringify(params),
 });

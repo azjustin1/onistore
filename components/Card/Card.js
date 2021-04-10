@@ -1,6 +1,9 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+
+import { Image } from "next/image";
 import styles from "./Card.module.css";
+import Button from "../Button/Button";
 
 function Card({
 	href,
@@ -11,8 +14,6 @@ function Card({
 	fakePrice,
 	realPrice,
 }) {
-	const [isSignIn, setSignIn] = useState(false);
-
 	const handleCardClick = () => {};
 	return (
 		<Link href={href}>
@@ -25,8 +26,8 @@ function Card({
 					height={height}
 				/>
 				<div className={styles.card__name}>{productName}</div>
-				<div className={styles.card__fakePrice}>{fakePrice}VNĐ</div>
-				<div className={styles.card__realPrice}>{realPrice}VNĐ</div>
+				<div className={styles.card__fakePrice}>{fakePrice} VNĐ</div>
+				<div className={styles.card__realPrice}>{realPrice} VNĐ</div>
 			</div>
 		</Link>
 	);

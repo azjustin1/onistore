@@ -2,6 +2,7 @@ import { createContext, useContext, useReducer } from "react";
 
 export const CART_ACTION = {
 	FETCH_CART: "FETCH_CART",
+	UPDATE_CART: "UPDATE_CART",
 	ADD_TO_CART: "ADD_TO_CART",
 	DELETE_FROM_CART: "DELETE_FROM_CART",
 	INCREASE_QUANTITY: "INCREASE_QUANTiTY",
@@ -9,61 +10,88 @@ export const CART_ACTION = {
 };
 
 const initialState = {
-	products: [],
-	count: 0,
+	cart: [],
+	subTotal: 0,
+	fee: 0,
+	total: 0,
 };
 
 const reducer = (state, action) => {
 	switch (action.type) {
 		case CART_ACTION.FETCH_CART:
+			let sum = 0;
+			if (localStorage.getItem("cart")) {
+				state.cart = JSON.parse(localStorage.getItem("cart"));
+			}
+			state.cart.map((item) => {
+				sum = sum + item.product.price * item.amount;
+			});
 			return {
 				...state,
-				products: localStorage.getItem("cart")
+				cart: localStorage.getItem("cart")
 					? JSON.parse(localStorage.getItem("cart"))
 					: localStorage.setItem("cart", []),
+				subTotal: sum,
+			};
+
+		case CART_ACTION.UPDATE_CART:
+			localStorage.setItem("cart", JSON.stringify(state.cart));
+			return {
+				...state,
 			};
 
 		case CART_ACTION.ADD_TO_CART:
-			if (state.products.find((item) => item.id === action.product.id)) {
-				const existItem = state.products.find(
-					(item) => item.id === action.product.id
-				);
-				existItem.quantity = existItem.quantity + action.quantity;
-			} else {
-				state.products.push(action.product);
+			// Increase the amount of item if it has been added before
+			if (state.cart.find((item) => item.product.id === action.product.id)) {
+				return {
+					...state,
+					cart: state.cart.map((item) =>
+						item.product.id === action.product.id
+							? { ...item, amount: item.amount + 1 }
+							: item
+					),
+				};
 			}
-			localStorage.setItem("cart", JSON.stringify(state.products));
-
 			return {
 				...state,
+				cart: [
+					...state.cart,
+					{ product: action.product, amount: action.amount },
+				],
+				subTotal: state.subTotal + action.product.price * action.amount,
 			};
 		case CART_ACTION.DELETE_FROM_CART:
-			state.products = state.products.filter(
-				(item) => item.id !== action.productId
+			let item = state.cart.find(
+				(item) => item.product.id === action.productId
 			);
-			localStorage.setItem("cart", JSON.stringify(state.products));
 			return {
 				...state,
+				cart: state.cart.filter((item) => item.product.id !== action.productId),
+				subTotal: state.subTotal - item.product.price * item.amount,
 			};
 
 		case CART_ACTION.INCREASE_QUANTITY:
+			item = state.cart.find((item) => item.product.id === action.productId);
 			return {
 				...state,
-				products: state.products.map((item) =>
-					item.id === action.productId
-						? { ...item, quantity: item.quantity++ }
+				cart: state.cart.map((item) =>
+					item.product.id === action.productId
+						? { ...item, amount: item.amount + 1 }
 						: item
 				),
+				subTotal: state.subTotal + item.product.price,
 			};
 
 		case CART_ACTION.DECREASE_QUANTITY:
+			item = state.cart.find((item) => item.product.id === action.productId);
 			return {
 				...state,
-				products: state.products.map((item) =>
-					item.id === action.productId
-						? { ...item, quantity: item.quantity-- }
+				cart: state.cart.map((item) =>
+					item.product.id === action.productId
+						? { ...item, amount: item.amount - 1 }
 						: item
 				),
+				subTotal: state.subTotal - item.product.price,
 			};
 	}
 };
