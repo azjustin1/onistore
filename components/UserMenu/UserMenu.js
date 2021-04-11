@@ -57,7 +57,7 @@ function UserMenu() {
 				</div>
 				<p>
 					<i style={{ fontSize: "28pt" }} className="fas fa-user-circle"></i>{" "}
-					{state.isSignIn ? "Jack" : "Account"}
+					{state.isSignIn ? state.username : "Account"}
 				</p>
 			</div>
 		</div>

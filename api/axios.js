@@ -3,11 +3,12 @@ import queryString from "query-string";
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
-const baseURL = "http://localhost:8000/api";
+const baseURL = "http://localhost:9000/api";
 
 const config = {
 	Accept: "application/json",
 	"Content-Type": "application/json",
+	"Access-Control-Allow-Origin": "*",
 };
 
 const instance = axios.create({

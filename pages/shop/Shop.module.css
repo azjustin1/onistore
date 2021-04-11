@@ -1,5 +1,6 @@
 .shop {
-	display: flex;
+	display: grid;
 	background-color: transparent;
+	grid-template-areas: "category main";
 	min-height: 100vh;
 }

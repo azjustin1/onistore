@@ -14,12 +14,4 @@ module.exports = withPlugins([[withImages]], {
 		backendUrl: process.env.BACKEND_URL,
 	},
 	distDir: "build",
-	async rewrites() {
-		return [
-			{
-				source: "/api/:path*",
-				destination: "http://localhost:9000*",
-			},
-		];
-	},
 });

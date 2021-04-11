@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import axios from "../api/axios";
+import axios from "axios";
 
 import { ACTION_TYPE, useGlobalState } from "../contexts/GlobalStateProvider";
 import main from "./Main.module.css";
@@ -14,10 +14,14 @@ export default function Home() {
 	const [products, setProducts] = useState([]);
 
 	useEffect(async () => {
-		dispatch({ type: ACTION_TYPE.START_LOADING });
-		const response = await axios.get("/products");
-		setProducts(response.data);
-		dispatch({ type: ACTION_TYPE.FINISH_LOADING });
+		try {
+			dispatch({ type: ACTION_TYPE.START_LOADING });
+			const response = await axios.get("http://localhost:9000/api/products");
+			setProducts(response.data);
+			dispatch({ type: ACTION_TYPE.FINISH_LOADING });
+		} catch (error) {
+			console.log(error);
+		}
 	}, []);
 
 	return (
@@ -29,7 +33,7 @@ export default function Home() {
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 
-				{products.map((product, i) => (
+				{products.map((product) => (
 					<DynamicComponent
 						key={product.id}
 						href={product.slug}

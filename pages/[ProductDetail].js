@@ -9,24 +9,7 @@ import InputNumber from "../components/InputNumber/InputNumber.js";
 import { useCart, CART_ACTION } from "../contexts/CartProvider";
 import { ACTION_TYPE } from "../contexts/GlobalStateProvider";
 
-let data = {
-	id: 1,
-	name: "Blouse",
-	fakePrice: "1500000 VND",
-	realPrice: "500000 VND",
-	quantity: 20,
-	description:
-		"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?",
-	images: [
-		"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgUSI4b0S1SizX3v4tiKDYw7L3_COlHWG8Sw&usqp=CAU",
-		"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiD1gCk5Qu0ZmRRuHa-Ff5shdRCm-hMEbkQg&usqp=CAU",
-		"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/affordableonline-1594998657.jpg?crop=0.502xw:1.00xh;0.251xw,0&resize=640:*",
-		"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK8embuWiMASP8mo3fjeNxmBaI-kfA8u9CsQ&usqp=CAU",
-	],
-};
-
-import axios from "../api/axios";
-import { route } from "next/dist/next-server/server/router";
+import axios from "axios";
 
 function Detail() {
 	const router = useRouter();
@@ -46,8 +29,14 @@ function Detail() {
 
 	useEffect(async () => {
 		if (router.isReady) {
-			const response = await axios.get(`/products${router.asPath}`);
-			setProduct(response.data.products);
+			try {
+				const response = await axios.get(
+					`http://localhost:9000/api/products${router.asPath}`
+				);
+				setProduct(response.data);
+			} catch (error) {
+				console.log(error.message);
+			}
 		}
 	}, [router.asPath]);
 
@@ -105,10 +94,10 @@ function Detail() {
 				</div>
 				<div className={styles.detail__price}>
 					<p style={{ textDecoration: "line-through", fontSize: "18pt" }}>
-						{product.fakePrice}
+						đ{product.fakePrice}
 					</p>
 					<p style={{ fontSize: "28pt", fontWeight: "bold" }}>
-						{product.realPrice}
+						đ{product.price}
 					</p>
 				</div>
 

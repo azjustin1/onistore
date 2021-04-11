@@ -31,6 +31,8 @@ function Input({
 			)}
 			{multiline ? (
 				<textarea
+					value={value}
+					onChange={onChange}
 					className={styles.container__textarea}
 					placeholder={placeholder}></textarea>
 			) : (

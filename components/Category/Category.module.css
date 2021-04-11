@@ -1,5 +1,6 @@
 .category {
-	width: 400px;
+	grid-area: category;
+	width: auto-fill;
 	min-height: 100vh;
 	background: transparent;
 	text-align: center;

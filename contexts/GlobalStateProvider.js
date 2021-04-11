@@ -2,11 +2,12 @@ import React, { createContext, useContext, useEffect, useReducer } from "react";
 
 import { removeClientToken, setClientToken } from "../api/axios";
 
+import axios from "axios";
+
 export const ACTION_TYPE = {
 	USER: "USER",
 	SIGN_IN: "SIGN_IN",
 	AUTHENTICATE: "AUTHENTICATE",
-	SET_TOKEN: "SET_TOKEN",
 	SIGN_OUT: "SIGN_OUT",
 	START_LOADING: "START_LOADING",
 	FINISH_LOADING: "FINISH_LOADING",
@@ -16,14 +17,27 @@ const initialState = {
 	isSignIn: false,
 	isLoading: false,
 	token: "",
+	username: "",
 };
+
+function parseJwt(token) {
+	if (!token) {
+		return;
+	}
+	const base64Url = token.split(".")[1];
+	const base64 = base64Url.replace("-", "+").replace("_", "/");
+	return JSON.parse(window.atob(base64));
+}
 
 const reducer = (state, action) => {
 	switch (action.type) {
 		case ACTION_TYPE.SIGN_IN:
+			localStorage.setItem("token", action.token);
+
 			return {
 				...state,
 				isSignIn: true,
+				username: parseJwt(action.token).sub,
 			};
 		case ACTION_TYPE.SIGN_OUT:
 			localStorage.removeItem("token");
@@ -33,25 +47,20 @@ const reducer = (state, action) => {
 				isSignIn: false,
 			};
 
-		case ACTION_TYPE.SET_TOKEN:
-			localStorage.setItem("token", action.payload);
-			setClientToken(action.payload);
-			return {
-				...state,
-				token: action.payload,
-			};
 		case ACTION_TYPE.AUTHENTICATE: {
 			const token = localStorage.getItem("token");
-			setClientToken(token);
 			if (token) {
 				return {
 					...state,
 					isSignIn: true,
+					username: parseJwt(token).sub,
+					token: token,
 				};
 			}
 			return {
 				...state,
 				isSignIn: false,
+				token: "",
 			};
 		}
 

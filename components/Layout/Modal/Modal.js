@@ -5,8 +5,7 @@ import styles from "./Modal.module.css";
 import Input from "../../Input/Input.js";
 import Button from "../../Button/Button.js";
 
-import axios from "../../../api/axios";
-// import axios from "axios";
+import axios from "axios";
 
 // Context
 import {
@@ -66,15 +65,14 @@ const Modal = () => {
 	const handleSignIn = async () => {
 		try {
 			dispatch({ type: ACTION_TYPE.START_LOADING });
-			const response = await axios.post("/signin", user);
-
-			dispatch({
-				type: ACTION_TYPE.SET_TOKEN,
-				payload: response.data.accessToken,
-			});
+			const response = await axios.post(
+				"http://localhost:9000/api/signin",
+				user
+			);
 
 			dispatch({
 				type: ACTION_TYPE.SIGN_IN,
+				token: response.data.token,
 			});
 			dispatch({ type: ACTION_TYPE.FINISH_LOADING });
 			document

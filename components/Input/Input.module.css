@@ -20,10 +20,10 @@
 
 .container__input {
 	justify-content: flex-start;
-	width: 80%;
+	width: 100%;
 	height: 100%;
 	line-height: 50%;
-	margin: 0 15px 0 0;
+	margin: 0 12px 0 15px;
 	border: none;
 	outline: none;
 	background: transparent;
@@ -38,7 +38,7 @@
 	width: 80%;
 	height: 100%;
 	line-height: 120%;
-	margin: 0 15px 0 0;
+	margin: 0 15px 0 15px;
 	border: none;
 	outline: none;
 	background: transparent;

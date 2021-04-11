@@ -12,7 +12,7 @@ export const CART_ACTION = {
 const initialState = {
 	cart: [],
 	subTotal: 0,
-	fee: 0,
+	delivery: 0,
 	total: 0,
 };
 

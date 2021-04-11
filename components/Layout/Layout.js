@@ -6,20 +6,17 @@ import Loader from "components/Layout/Loader/Loader.js";
 import Modal from "components/Layout/Modal/Modal.js";
 import Sidebar from "components/Layout/Sidebar/Sidebar.js";
 import React, { useEffect, useState } from "react";
-import {
-	ACTION_TYPE,
-	useGlobalState,
-} from "../../contexts/GlobalStateProvider";
+import { useCart, CART_ACTION } from "../../contexts/CartProvider";
 import main from "../../pages/Main.module.css";
 import layout from "./Layout.module.css";
 
 const Layout = ({ children }) => {
-	const { state, dispatch } = useGlobalState();
+	const { dispatch } = useCart();
 	const size = useWindowSize();
 
 	useEffect(() => {
-		dispatch({ type: ACTION_TYPE.AUTHENTICATE });
-	}, [state.isSignIn]);
+		dispatch({ type: CART_ACTION.FETCH_CART });
+	}, []);
 
 	useEffect(() => {
 		document.onscroll = () => {
