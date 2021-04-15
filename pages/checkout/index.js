@@ -20,6 +20,7 @@ const index = () => {
 		address: "",
 		phone: "",
 		note: "",
+		total: "",
 	});
 
 	const [message, setMessage] = useState({
@@ -28,19 +29,32 @@ const index = () => {
 	});
 
 	const [productCheckOutDtoList, setProductCheckOutDtoList] = useState([]);
+	const [cart, setCart] = useState([]);
 
 	useEffect(() => {
 		if (localStorage.getItem("cart")) {
 			const cart = JSON.parse(localStorage.getItem("cart"));
 			cart.map((item) => {
-				setProductCheckOutDtoList((productCheckOutDtoList) => [
-					...productCheckOutDtoList,
+				setOrder({
+					...order,
+					total: order.total + item.product.price * item.amount,
+				});
+				// setProductCheckOutDtoList((productCheckOutDtoList) => [
+				// 	...productCheckOutDtoList,
+				// 	{
+				// 		productCustomDto: {
+				// 			id: item.product.id,
+				// 			quantity: item.product.quantity,
+				// 		},
+				// 		amount: item.amount,
+				// 	},
+				// ]);
+				setCart((cart) => [
+					...cart,
 					{
-						productCustomDto: {
-							id: item.product.id,
-							quantity: item.product.quantity,
-						},
-						amount: item.amount,
+						id: item.product.id,
+						quantity: item.amount,
+						price: item.product.price,
 					},
 				]);
 			});
@@ -64,12 +78,14 @@ const index = () => {
 			return;
 		}
 		const data = {
-			productCheckOutDtoList: productCheckOutDtoList,
+			// productCheckOutDtoList: productCheckOutDtoList,
+			cart: cart,
 			name: order.name,
 			email: order.email,
 			phone: order.phone,
 			address: order.address,
 			note: order.note,
+			total: order.total,
 		};
 		if (state.cart.length === 0) {
 			setMessage({ type: "error", content: "No items in cart" });
@@ -82,6 +98,7 @@ const index = () => {
 					Authorization: `Bearer ${localStorage.getItem("token")}`,
 				},
 			});
+			console.log(response.data);
 			if (response.status === 200) {
 				setMessage({ type: "success", content: "Checkout Successfully" });
 				dispatchGlobal({ type: ACTION_TYPE.FINISH_LOADING });

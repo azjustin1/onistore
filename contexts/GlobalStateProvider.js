@@ -11,6 +11,9 @@ export const ACTION_TYPE = {
 	SIGN_OUT: "SIGN_OUT",
 	START_LOADING: "START_LOADING",
 	FINISH_LOADING: "FINISH_LOADING",
+	SET_PRODUCTS: "SET_PRODUCTS",
+	FILTER: "FILTER",
+	UN_FILTER: "UN_FILTER",
 };
 
 const initialState = {
@@ -18,6 +21,8 @@ const initialState = {
 	isLoading: false,
 	token: "",
 	username: "",
+	products: [],
+	filters: [],
 };
 
 function parseJwt(token) {
@@ -33,11 +38,11 @@ const reducer = (state, action) => {
 	switch (action.type) {
 		case ACTION_TYPE.SIGN_IN:
 			localStorage.setItem("token", action.token);
-
+			localStorage.setItem("username", action.username);
 			return {
 				...state,
 				isSignIn: true,
-				username: parseJwt(action.token).sub,
+				username: action.username,
 			};
 		case ACTION_TYPE.SIGN_OUT:
 			localStorage.removeItem("token");
@@ -49,11 +54,12 @@ const reducer = (state, action) => {
 
 		case ACTION_TYPE.AUTHENTICATE: {
 			const token = localStorage.getItem("token");
-			if (token) {
+			const username = localStorage.getItem("username");
+			if (username) {
 				return {
 					...state,
 					isSignIn: true,
-					username: parseJwt(token).sub,
+					username: username,
 					token: token,
 				};
 			}
@@ -73,6 +79,21 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				isLoading: false,
+			};
+		case ACTION_TYPE.SET_PRODUCTS:
+			return {
+				...state,
+				products: action.products,
+			};
+		case ACTION_TYPE.FILTER:
+			return {
+				...state,
+				filters: [...filters, action.by],
+			};
+		case ACTION_TYPE.UN_FILTER:
+			return {
+				...state,
+				filters: state.filters.filter((item) => item !== action.by),
 			};
 	}
 };

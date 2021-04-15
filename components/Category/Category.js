@@ -3,8 +3,16 @@ import Checkbox from "../Checkbox/Checkbox.js";
 import InputRange from "../InputRange/InputRange.js";
 import styles from "./Category.module.css";
 
+import {
+	useGlobalState,
+	ACTION_TYPE,
+} from "../../contexts/GlobalStateProvider";
+
 const Category = ({ min, max, data }) => {
+	const { state, dispatchGlobal } = useGlobalState();
+
 	const [price, setPrice] = useState(0);
+
 	const handleOnChange = (e) => {
 		setPrice(e.target.value);
 	};

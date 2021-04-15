@@ -31,7 +31,7 @@ function Detail() {
 		if (router.isReady) {
 			try {
 				const response = await axios.get(`/products${router.asPath}`);
-				setProduct(response.data.products);
+				setProduct(response.data);
 			} catch (error) {
 				console.log(error.message);
 			}
@@ -92,7 +92,7 @@ function Detail() {
 				</div>
 				<div className={styles.detail__price}>
 					<p style={{ textDecoration: "line-through", fontSize: "18pt" }}>
-						đ{product.fakePrice}
+						đ{product.fake_price}
 					</p>
 					<p style={{ fontSize: "28pt", fontWeight: "bold" }}>
 						đ{product.price}

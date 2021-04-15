@@ -2,19 +2,25 @@ import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
 import axios from "../../api/axios";
 import Category from "../../components/Category/Category.js";
-import { useGlobalState } from "../../contexts/GlobalStateProvider";
+import {
+	ACTION_TYPE,
+	useGlobalState,
+} from "../../contexts/GlobalStateProvider";
 import main from "../Main.module.css";
 import styles from "./Shop.module.css";
 
 const DynamicComponent = dynamic(() => import("../../components/Card/Card"));
 
 function Shop({ children }) {
-	const { dispatch } = useGlobalState();
+	const { state, dispatchGlobal } = useGlobalState();
 	const [products, setProducts] = useState([]);
 	const [categories, setCategories] = useState([]);
 
 	useEffect(async () => {
 		const response = await axios.get("/products");
+
+		dispatchGlobal({ type: ACTION_TYPE.SET_PRODUCTS, products: response.data });
+
 		const categories = await axios.get("/categories");
 		setCategories(categories.data);
 		setProducts(response.data);
@@ -33,7 +39,7 @@ function Shop({ children }) {
 				)}
 			/>
 			<div className={main.main}>
-				{products.map((product) => (
+				{state.products.map((product) => (
 					<DynamicComponent
 						key={product.id}
 						href={product.slug}

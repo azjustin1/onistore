@@ -5,7 +5,7 @@ import styles from "./Modal.module.css";
 import Input from "../../Input/Input.js";
 import Button from "../../Button/Button.js";
 
-import axios from "axios";
+import axios from "../../../api/axios";
 
 // Context
 import {
@@ -17,13 +17,18 @@ const Modal = () => {
 	const { state, dispatchGlobal } = useGlobalState();
 	const [isOpenSignIn, setOpen] = useState(true);
 
+	const [message, setMessage] = useState({
+		type: "",
+		content: "",
+	});
+
 	const [user, setUser] = useState({
 		username: "",
 		password: "",
 	});
 	const [newUser, setNewUser] = useState({
-		username: "",
 		email: "",
+		username: "",
 		password: "",
 	});
 
@@ -65,14 +70,12 @@ const Modal = () => {
 	const handleSignIn = async () => {
 		try {
 			dispatchGlobal({ type: ACTION_TYPE.START_LOADING });
-			const response = await axios.post(
-				"http://localhost:9000/api/signin",
-				user
-			);
+			const response = await axios.post("/signin", user);
 
 			dispatchGlobal({
 				type: ACTION_TYPE.SIGN_IN,
 				token: response.data.token,
+				username: user.username,
 			});
 			dispatchGlobal({ type: ACTION_TYPE.FINISH_LOADING });
 			document
@@ -80,18 +83,23 @@ const Modal = () => {
 				.classList.remove(styles.open);
 		} catch (error) {
 			dispatchGlobal({ type: ACTION_TYPE.FINISH_LOADING });
+			setMessage({ type: "error", content: "Sign in failed" });
 		}
 	};
 
 	const handleSignUp = async () => {
 		try {
-			const response = await axios.get("/api/products");
-			console.log(response);
-			document
-				.getElementsByClassName(styles.modal)[0]
-				.classList.remove(styles.open);
+			const response = await axios.post("/signup", newUser);
+
+			// document
+			// 	.getElementsByClassName(styles.modal)[0]
+			// 	.classList.remove(styles.open);
+			setMessage({
+				type: "success",
+				content: "Sign up successfully",
+			});
 		} catch (error) {
-			console.log(error);
+			setMessage({ type: "error", content: "Sign up failed" });
 			dispatchGlobal({ type: ACTION_TYPE.FINISH_LOADING });
 		}
 	};
@@ -161,7 +169,17 @@ const Modal = () => {
 						name="password"
 						onChange={handleInputChange}
 					/>
-
+					{message ? (
+						<div style={{ textAlign: "center" }}>
+							{message.type === "error" ? (
+								<p style={{ color: "red" }}>{message.content}</p>
+							) : (
+								<p style={{ color: "green" }}>{message.content}</p>
+							)}
+						</div>
+					) : (
+						""
+					)}
 					{isOpenSignIn ? (
 						<Button
 							onClick={handleSignIn}
