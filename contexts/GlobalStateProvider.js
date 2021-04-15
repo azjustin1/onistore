@@ -80,9 +80,9 @@ const reducer = (state, action) => {
 const GlobalContext = createContext();
 
 const GlobalStateProvider = ({ children }) => {
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const [state, dispatchGlobal] = useReducer(reducer, initialState);
 	return (
-		<GlobalContext.Provider value={{ state, dispatch, ACTION_TYPE }}>
+		<GlobalContext.Provider value={{ state, dispatchGlobal, ACTION_TYPE }}>
 			{children}
 		</GlobalContext.Provider>
 	);

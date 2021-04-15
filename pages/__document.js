@@ -1,21 +1,22 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 
-import axios from "axios";
+import axios from "../api/axios";
 
 import { useGlobalState, ACTION_TYPE } from "../contexts/GlobalStateProvider";
 function __document({ children }) {
-	const { dispatch } = useGlobalState();
+	const { dispatchGlobal } = useGlobalState();
 
 	useEffect(async () => {
 		try {
 			const token = localStorage.getItem("token");
-			const response = await axios.get("http://localhost:9000/api/auth", {
+			const response = await axios.get("/auth", {
 				headers: { Authorization: `Bearer ${token}` },
 			});
-			if (response.status === 200) dispatch({ type: ACTION_TYPE.AUTHENTICATE });
+			if (response.status === 200)
+				dispatchGlobal({ type: ACTION_TYPE.AUTHENTICATE });
 		} catch (error) {
-			dispatch({ type: ACTION_TYPE.SIGN_OUT });
+			dispatchGlobal({ type: ACTION_TYPE.SIGN_OUT });
 		}
 	}, []);
 	return (

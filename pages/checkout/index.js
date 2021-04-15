@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Checkout.module.css";
-
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
-import { useCart } from "../../contexts/CartProvider";
+import styles from "./Checkout.module.css";
+// Contexts
+import {
+	useGlobalState,
+	ACTION_TYPE,
+} from "../../contexts/GlobalStateProvider";
+import { CART_ACTION, useCart } from "../../contexts/CartProvider";
 
-import axios from "axios";
+import axios from "../../api/axios";
 
 const index = () => {
-	const { state } = useCart();
+	const { dispatchGlobal } = useGlobalState();
+	const { state, dispatch } = useCart();
 	const [order, setOrder] = useState({
 		name: "",
 		email: "",
 		address: "",
 		phone: "",
 		note: "",
+	});
+
+	const [message, setMessage] = useState({
+		type: "",
+		content: "",
 	});
 
 	const [productCheckOutDtoList, setProductCheckOutDtoList] = useState([]);
@@ -43,6 +53,16 @@ const index = () => {
 	};
 
 	const handleCheckout = async () => {
+		if (
+			order.email === "" ||
+			order.name === "" ||
+			order.phone === "" ||
+			order.address === "" ||
+			order.note === ""
+		) {
+			setMessage({ type: "error", content: "Please enter all information" });
+			return;
+		}
 		const data = {
 			productCheckOutDtoList: productCheckOutDtoList,
 			name: order.name,
@@ -51,17 +71,24 @@ const index = () => {
 			address: order.address,
 			note: order.note,
 		};
-		console.log(data);
+		if (state.cart.length === 0) {
+			setMessage({ type: "error", content: "No items in cart" });
+			return;
+		}
 		try {
-			const response = await axios.post(
-				"http://localhost:9000/api/check-out",
-				data,
-				{
-					headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-				}
-			);
+			dispatchGlobal({ type: ACTION_TYPE.START_LOADING });
+			const response = await axios.post("/checkout", data, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
+				},
+			});
+			if (response.status === 200) {
+				setMessage({ type: "success", content: "Checkout Successfully" });
+				dispatchGlobal({ type: ACTION_TYPE.FINISH_LOADING });
+				dispatch({ type: CART_ACTION.CLEAR_CART });
+			}
 		} catch (error) {
-			console.log(error);
+			setMessage({ type: "error", content: "Checkout Failed" });
 		}
 	};
 	return (
@@ -121,6 +148,17 @@ const index = () => {
 						<div className={styles.total}>
 							Total: đ{state.subTotal + state.delivery}
 						</div>
+						{message ? (
+							<div>
+								{message.type === "error" ? (
+									<p style={{ color: "red" }}>{message.content}</p>
+								) : (
+									<p style={{ color: "green" }}>{message.content}</p>
+								)}
+							</div>
+						) : (
+							""
+						)}
 						<div className={styles.checkoutButton}>
 							<Button
 								onClick={handleCheckout}

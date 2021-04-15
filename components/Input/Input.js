@@ -23,7 +23,7 @@ function Input({
 			}}
 			className={styles.container}>
 			{icon ? (
-				<div className={styles.container__icon}>
+				<div style={{ lineHeight: height }} className={styles.container__icon}>
 					<i className={icon}></i>
 				</div>
 			) : (

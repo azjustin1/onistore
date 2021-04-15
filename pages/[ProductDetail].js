@@ -9,7 +9,7 @@ import InputNumber from "../components/InputNumber/InputNumber.js";
 import { useCart, CART_ACTION } from "../contexts/CartProvider";
 import { ACTION_TYPE } from "../contexts/GlobalStateProvider";
 
-import axios from "axios";
+import axios from "../api/axios";
 
 function Detail() {
 	const router = useRouter();
@@ -30,10 +30,8 @@ function Detail() {
 	useEffect(async () => {
 		if (router.isReady) {
 			try {
-				const response = await axios.get(
-					`http://localhost:9000/api/products${router.asPath}`
-				);
-				setProduct(response.data);
+				const response = await axios.get(`/products${router.asPath}`);
+				setProduct(response.data.products);
 			} catch (error) {
 				console.log(error.message);
 			}

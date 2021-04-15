@@ -5,6 +5,7 @@ export const CART_ACTION = {
 	UPDATE_CART: "UPDATE_CART",
 	ADD_TO_CART: "ADD_TO_CART",
 	DELETE_FROM_CART: "DELETE_FROM_CART",
+	CLEAR_CART: "CLEAR_CART",
 	INCREASE_QUANTITY: "INCREASE_QUANTiTY",
 	DECREASE_QUANTITY: "DECREASE_QUANTITY",
 };
@@ -22,10 +23,13 @@ const reducer = (state, action) => {
 			let sum = 0;
 			if (localStorage.getItem("cart")) {
 				state.cart = JSON.parse(localStorage.getItem("cart"));
+				state.cart.map((item) => {
+					sum = sum + item.product.price * item.amount;
+				});
+			} else {
+				localStorage.setItem("cart", JSON.stringify([]));
 			}
-			state.cart.map((item) => {
-				sum = sum + item.product.price * item.amount;
-			});
+
 			return {
 				...state,
 				cart: localStorage.getItem("cart")
@@ -42,6 +46,7 @@ const reducer = (state, action) => {
 
 		case CART_ACTION.ADD_TO_CART:
 			// Increase the amount of item if it has been added before
+
 			if (state.cart.find((item) => item.product.id === action.product.id)) {
 				return {
 					...state,
@@ -68,6 +73,14 @@ const reducer = (state, action) => {
 				...state,
 				cart: state.cart.filter((item) => item.product.id !== action.productId),
 				subTotal: state.subTotal - item.product.price * item.amount,
+			};
+
+		case CART_ACTION.CLEAR_CART:
+			state.cart = [];
+			localStorage.setItem("cart", JSON.stringify(state.cart));
+			return {
+				...state,
+				cart: [],
 			};
 
 		case CART_ACTION.INCREASE_QUANTITY:

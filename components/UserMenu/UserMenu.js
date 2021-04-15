@@ -8,7 +8,7 @@ import modal from "../Layout/Modal/Modal.module.css";
 import styles from "./UserMenu.module.css";
 
 function UserMenu() {
-	const { state, dispatch } = useGlobalState();
+	const { state, dispatchGlobal } = useGlobalState();
 	const [isOpen, setOpen] = useState(false);
 	const menu = useRef();
 
@@ -34,7 +34,7 @@ function UserMenu() {
 	};
 
 	const handleSignOut = async () => {
-		await dispatch({ type: ACTION_TYPE.SIGN_OUT });
+		await dispatchGlobal({ type: ACTION_TYPE.SIGN_OUT });
 		document
 			.getElementsByClassName(styles.userMenu__menu)[0]
 			.classList.remove(styles.open);

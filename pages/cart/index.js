@@ -25,25 +25,27 @@ function Cart() {
 		<div className={styles.cart__container}>
 			<div className={styles.cart__left}>
 				<h1>Shopping Cart</h1>
-				{state.cart.map((item) => (
-					<CartItem
-						key={item.product.id}
-						id={item.product.id}
-						// image={
-						// 	item.product.images
-						// 		? item.product.images[0]
-						// 		: "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F.jpg"
-						// }
-						image="https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F.jpg"
-						name={item.product.name}
-						price={item.product.price}
-						quantity={item.product.quantity}
-						amount={item.amount}
-						handleDelete={() => {
-							handleDelete(item.product.id);
-						}}
-					/>
-				))}
+				{state.cart
+					? state.cart.map((item) => (
+							<CartItem
+								key={item.product.id}
+								id={item.product.id}
+								// image={
+								// 	item.product.images
+								// 		? item.product.images[0]
+								// 		: "https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F.jpg"
+								// }
+								image="https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F.jpg"
+								name={item.product.name}
+								price={item.product.price}
+								quantity={item.product.quantity}
+								amount={item.amount}
+								handleDelete={() => {
+									handleDelete(item.product.id);
+								}}
+							/>
+					  ))
+					: ""}
 			</div>
 			<div className={styles.cart__right}>
 				<h1>Total</h1>

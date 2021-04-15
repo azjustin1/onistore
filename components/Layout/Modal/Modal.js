@@ -14,7 +14,7 @@ import {
 } from "../../../contexts/GlobalStateProvider";
 
 const Modal = () => {
-	const { state, dispatch } = useGlobalState();
+	const { state, dispatchGlobal } = useGlobalState();
 	const [isOpenSignIn, setOpen] = useState(true);
 
 	const [user, setUser] = useState({
@@ -64,22 +64,22 @@ const Modal = () => {
 
 	const handleSignIn = async () => {
 		try {
-			dispatch({ type: ACTION_TYPE.START_LOADING });
+			dispatchGlobal({ type: ACTION_TYPE.START_LOADING });
 			const response = await axios.post(
 				"http://localhost:9000/api/signin",
 				user
 			);
 
-			dispatch({
+			dispatchGlobal({
 				type: ACTION_TYPE.SIGN_IN,
 				token: response.data.token,
 			});
-			dispatch({ type: ACTION_TYPE.FINISH_LOADING });
+			dispatchGlobal({ type: ACTION_TYPE.FINISH_LOADING });
 			document
 				.getElementsByClassName(styles.modal)[0]
 				.classList.remove(styles.open);
 		} catch (error) {
-			dispatch({ type: ACTION_TYPE.FINISH_LOADING });
+			dispatchGlobal({ type: ACTION_TYPE.FINISH_LOADING });
 		}
 	};
 
@@ -92,7 +92,7 @@ const Modal = () => {
 				.classList.remove(styles.open);
 		} catch (error) {
 			console.log(error);
-			dispatch({ type: ACTION_TYPE.FINISH_LOADING });
+			dispatchGlobal({ type: ACTION_TYPE.FINISH_LOADING });
 		}
 	};
 
